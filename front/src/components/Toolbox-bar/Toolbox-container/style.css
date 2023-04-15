@@ -16,3 +16,9 @@
   border-radius: 8px;
   background-color: var(--primaryColor);
 }
+
+.toolbox-undoredo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,3 +1,16 @@
 .tool-button {
+  display: flex;
+  color: var(--primaryColor);
+  background-color: var(--elementColor);
+  border: none;
+  border-radius: 8px;
   margin-left: 8px;
+  padding: 4px;
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-button:hover {
+  background-color: var(--primaryActiveColor);
 }
