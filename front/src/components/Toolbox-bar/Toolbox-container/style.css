@@ -1,0 +1,18 @@
+.toolbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--elementColor);
+  width: 100%;
+  height: 40px;
+
+  border-radius: 8px;
+}
+
+.toolbox-separator {
+  width: 2px;
+  height: 32px;
+  margin-left: 8px;
+  border-radius: 8px;
+  background-color: var(--primaryColor);
+}

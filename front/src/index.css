@@ -1,0 +1,12 @@
+:root {
+  --backgroundColor: #292929;
+  --elementColor: #1c1c1c;
+  --primaryColor: #9a8960;
+}
+
+body {
+  font-size: 24px;
+  margin: 8px;
+  background: var(--backgroundColor);
+  color: var(--primaryColor);
+}
