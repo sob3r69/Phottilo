@@ -1,0 +1,43 @@
+.App {
+  font-family: susan, sans-serif;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 8px 8px 0px 8px;
+}
+
+.App-row {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.image-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 8px;
+  background-color: var(--elementColor);
+}
+
+.parameters-field {
+  height: fit-content;
+  width: 15%;
+  margin-top: 8px;
+  padding: 8px;
+  margin-left: 8px;
+  border-radius: 8px;
+  background-color: var(--elementColor);
+}
+
+.status-bar {
+  width: 100%;
+  margin-top: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 18px;
+  background-color: var(--elementColor);
+}

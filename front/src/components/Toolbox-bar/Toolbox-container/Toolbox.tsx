@@ -6,7 +6,7 @@ import './style.css';
 export function Toolbox() {
   return (
     <div className="toolbox">
-      <EditMode></EditMode>
+      <EditMode />
       <div className="toolbox-separator"></div>
       <ToolButton Icon={BsBrush} />
       <ToolButton Icon={BsEraser} />
