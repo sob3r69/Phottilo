@@ -1,6 +1,6 @@
 import './style.css';
 
-export function EditMode() {
+export default function EditMode() {
   return (
     <div className="dropdown">
       <span className="selected-mode">Paint Mode</span>

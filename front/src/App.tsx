@@ -1,4 +1,4 @@
-import { Toolbox } from './components/Toolbox-bar/Toolbox-container/Toolbox';
+import Toolbox from './components/ToolboxBar/Toolbox/Toolbox';
 import './App.css';
 
 function App() {

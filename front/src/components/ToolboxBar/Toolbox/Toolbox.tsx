@@ -1,9 +1,11 @@
-import { EditMode } from '../Mode-selector/EditMode';
-import { ToolButton } from '../Tool-button/ToolButton';
+import EditMode from '../ModeSelector/EditMode';
+import ToolButton from '../ToolButton/ToolButton';
+
 import { BsBrush, BsEraser, BsPentagon } from 'react-icons/bs';
+
 import './style.css';
 
-export function Toolbox() {
+export default function Toolbox() {
   return (
     <div className="toolbox">
       <EditMode />
