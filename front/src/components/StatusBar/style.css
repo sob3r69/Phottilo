@@ -1,0 +1,17 @@
+.status-bar {
+  width: 100%;
+  margin-top: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 18px;
+  background-color: var(--elementColor);
+}
+
+.image-selector input[type='file'] {
+  display: none;
+}
+
+.image-selector:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+}
