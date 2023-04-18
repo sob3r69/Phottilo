@@ -19,7 +19,7 @@ export default function StatusBar({ selectedImage, setSelectedImage }: StatusBar
       <label className="image-selector">
         <input
           onChange={(img) => {
-            setSelectedImage(img.target.files![0]);
+            if (img.target.files![0]) setSelectedImage(img.target.files![0]);
           }}
           type="file"
         ></input>
