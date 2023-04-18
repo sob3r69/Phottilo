@@ -6,7 +6,14 @@ interface StatusBarProps {
   setSelectedImage: Dispatch<SetStateAction<File | undefined>>;
 }
 
-export default function StatusBar({ setSelectedImage }: StatusBarProps) {
+export default function StatusBar({ selectedImage, setSelectedImage }: StatusBarProps) {
+  function displayName(): string {
+    if (selectedImage) {
+      return selectedImage.name;
+    }
+    return 'Select an image';
+  }
+
   return (
     <div className="status-bar">
       <label className="image-selector">
@@ -16,7 +23,7 @@ export default function StatusBar({ setSelectedImage }: StatusBarProps) {
           }}
           type="file"
         ></input>
-        Click here to select image
+        {displayName()}
       </label>
     </div>
   );
