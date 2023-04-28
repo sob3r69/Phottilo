@@ -1,16 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './style.css';
 import { Layer, Rect, Stage, Image } from 'react-konva';
-import Konva from 'konva';
-import useImage from 'use-image';
 import { KonvaEventObject } from 'konva/lib/Node';
+import FilteredImage from './FilteredImage';
 interface ImageFieldProps {
   selectedImage: File;
 }
 
 export function ImageField({ selectedImage }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
-  const [image] = useImage(imageURL);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const [stage, setStage] = useState({
@@ -68,7 +66,7 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
         y={stage.y}
       >
         <Layer>
-          <Image image={image} draggable={true} />
+          <FilteredImage imageURL={imageURL} />
         </Layer>
       </Stage>
     </div>
