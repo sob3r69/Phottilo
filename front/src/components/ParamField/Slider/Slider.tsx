@@ -5,11 +5,19 @@ interface SliderProps {
   min: number;
   max: number;
   step: number;
+  value: number;
+  onChange: React.Dispatch<React.SetStateAction<number>>;
   borderColor?: string;
 }
 
-export default function Slider({ min, max, step, borderColor }: SliderProps) {
-  const [value, setValue] = useState('0');
+export default function Slider({
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  borderColor,
+}: SliderProps) {
   const border = borderColor
     ? { border: '2px solid ' + borderColor }
     : { border: '2px solid var(--primaryColor)' };
@@ -28,7 +36,7 @@ export default function Slider({ min, max, step, borderColor }: SliderProps) {
           value={value}
           step={step}
           onChange={(e) => {
-            setValue(e.target.value);
+            onChange(parseFloat(e.target.value));
           }}
         />
       </label>
