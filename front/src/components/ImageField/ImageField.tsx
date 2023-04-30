@@ -39,7 +39,7 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
 
     const scaleBy = 1.2;
     const stage = e.target.getStage()!;
-    const oldScale = stage!.scaleX();
+    const oldScale = stage.scaleX();
     const mousePointTo = {
       x: stage.getPointerPosition()!.x / oldScale - stage.x() / oldScale,
       y: stage.getPointerPosition()!.y / oldScale - stage.y() / oldScale,

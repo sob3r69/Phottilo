@@ -23,14 +23,16 @@ export default function FilteredImage({ imageURL }: ImageProps) {
       ref={imageRef}
       image={image}
       draggable={true}
-      filters={[
-        Konva.Filters.Blur,
-        Konva.Filters.HSL,
-        Konva.Filters.HSV,
-        Konva.Filters.Noise,
-        Konva.Filters.Pixelate,
-        Konva.Filters.RGBA,
-      ]}
+      filters={
+        [
+          // Konva.Filters.Blur,
+          // Konva.Filters.HSL,
+          // Konva.Filters.HSV,
+          // Konva.Filters.Noise,
+          // Konva.Filters.Pixelate,
+          // Konva.Filters.RGBA,
+        ]
+      }
       luminance={0}
       value={0}
       noise={0}
