@@ -35,6 +35,6 @@
   cursor: pointer;
 }
 
-.dropdown:hover .dropdown-content {
+.mode-changer-dropdown:hover .dropdown-content {
   display: block;
 }
