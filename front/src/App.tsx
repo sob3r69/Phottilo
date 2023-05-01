@@ -4,16 +4,18 @@ import './App.css';
 import { useState } from 'react';
 import { ImageField } from './components/ImageField/ImageField';
 import { ParamField } from './components/ParamField/ParamField';
+import { modes } from './components/Modes/ModeTypes';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState<File>();
+  const [selectedMode, setMode] = useState(modes.paint);
 
   return (
     <div className="App">
-      <Toolbox />
+      <Toolbox selectedMode={selectedMode} setMode={setMode} />
       <div className="App-row">
         <ImageField selectedImage={selectedImage!} />
-        <ParamField />
+        <ParamField modeName={selectedMode.name} />
       </div>
       <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
     </div>
