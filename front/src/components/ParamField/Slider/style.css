@@ -1,8 +1,15 @@
 .slider-field {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 8px;
   width: 100%;
+}
+
+.slider-text {
+  font-size: 20px;
+  text-align: center;
+  width: 4.5em;
+  margin-bottom: 4px;
 }
 
 .slider-value {

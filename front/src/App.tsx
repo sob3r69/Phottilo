@@ -15,7 +15,7 @@ function App() {
       <Toolbox selectedMode={selectedMode} setMode={setMode} />
       <div className="App-row">
         <ImageField selectedImage={selectedImage!} />
-        <ParamField modeName={selectedMode.name} />
+        <ParamField selectedMode={selectedMode} />
       </div>
       <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
     </div>

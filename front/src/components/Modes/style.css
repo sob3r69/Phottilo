@@ -1,0 +1,8 @@
+.tools-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.param-container {
+  width: 100%;
+}
