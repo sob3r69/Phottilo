@@ -5,9 +5,9 @@ import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
 export default function () {
   return (
     <div className="tools-container">
-      <ToolButton Icon={BsBrush} />
-      <ToolButton Icon={BsEraser} />
-      <ToolButton Icon={BsPentagon} />
+      <ToolButton Icon={BsBrush} hintText="Brush" />
+      <ToolButton Icon={BsEraser} hintText="Eraser" />
+      <ToolButton Icon={BsPentagon} hintText="Figure" />
     </div>
   );
 }
