@@ -3,6 +3,7 @@ import { Image as ImageShape } from 'konva/lib/shapes/Image';
 import React, { useEffect } from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
+import data from '../../assets/data/data.json';
 
 interface ImageProps {
   imageURL: string;
@@ -23,16 +24,15 @@ export default function FilteredImage({ imageURL }: ImageProps) {
       ref={imageRef}
       image={image}
       draggable={true}
-      filters={
-        [
-          // Konva.Filters.Blur,
-          // Konva.Filters.HSL,
-          // Konva.Filters.HSV,
-          // Konva.Filters.Noise,
-          // Konva.Filters.Pixelate,
-          // Konva.Filters.RGBA,
-        ]
-      }
+      filters={[
+        Konva.Filters.Blur,
+        // Konva.Filters.HSL,
+        // Konva.Filters.HSV,
+        // Konva.Filters.Noise,
+        // Konva.Filters.Pixelate,
+        // Konva.Filters.RGBA,
+      ]}
+      blurRadius={data.blur}
       luminance={0}
       value={0}
       noise={0}

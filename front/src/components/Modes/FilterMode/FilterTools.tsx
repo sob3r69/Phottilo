@@ -6,8 +6,8 @@ import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
 export default function () {
   return (
     <div className="tools-container">
-      <ToolButton Icon={MdBlurCircular} hintText="Blur" />
-      <ToolButton Icon={TbColorFilter} hintText="Colors" />
+      <ToolButton Icon={MdBlurCircular} hintText="Blur" onClick={() => {}} />
+      <ToolButton Icon={TbColorFilter} hintText="Colors" onClick={() => {}} />
     </div>
   );
 }

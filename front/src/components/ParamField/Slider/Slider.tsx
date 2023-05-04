@@ -6,7 +6,8 @@ interface SliderProps {
   max: number;
   step: number;
   value: number;
-  onChange: React.Dispatch<React.SetStateAction<number>>;
+  // React.Dispatch<React.SetStateAction<number>>
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   borderColor?: string;
   text?: string;
 }
@@ -40,9 +41,7 @@ export default function Slider({
           max={max}
           value={value}
           step={step}
-          onChange={(e) => {
-            onChange(parseFloat(e.target.value));
-          }}
+          onChange={(e) => onChange(e)}
         />
       </label>
     </div>
