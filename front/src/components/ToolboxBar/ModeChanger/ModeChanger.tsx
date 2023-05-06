@@ -26,13 +26,7 @@ export default function ModeChanger({ selectedMode, setMode }: ModeChangerProps)
           >
             Filter Mode
           </button>
-          <button
-            onClick={() => {
-              setMode(modes.resize);
-            }}
-          >
-            Resize Mode
-          </button>
+          <button>Resize Mode</button>
         </div>
       </div>
     </div>

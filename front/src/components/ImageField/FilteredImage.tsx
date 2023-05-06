@@ -1,9 +1,10 @@
 import Konva from 'konva';
 import { Image as ImageShape } from 'konva/lib/shapes/Image';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
 import data from '../../assets/data/data.json';
+import { MyContext } from '../../App';
 
 interface ImageProps {
   imageURL: string;
@@ -12,6 +13,8 @@ interface ImageProps {
 export default function FilteredImage({ imageURL }: ImageProps) {
   const [image] = useImage(imageURL);
   const imageRef = React.useRef<ImageShape>(null);
+
+  const context = useContext(MyContext);
 
   useEffect(() => {
     if (image) {
@@ -32,7 +35,7 @@ export default function FilteredImage({ imageURL }: ImageProps) {
         // Konva.Filters.Pixelate,
         // Konva.Filters.RGBA,
       ]}
-      blurRadius={data.blur}
+      blurRadius={context.blur}
       luminance={0}
       value={0}
       noise={0}

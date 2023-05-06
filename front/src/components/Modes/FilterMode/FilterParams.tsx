@@ -1,43 +1,41 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import data from '../../../assets/data/data.json';
 import Slider from '../../ParamField/Slider/Slider';
+import { MyContext } from '../../../App';
 
 export default function () {
+  const context = useContext(MyContext);
+
   const [blur, setBlur] = useState(0);
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
   const [alpha, setAlpha] = useState(0);
 
-  function blurHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    var currVal = parseFloat(e.target.value);
-    setBlur(currVal);
-    data.blur = currVal;
+  function blurHandler(e: number) {
+    setBlur(e);
+    data.blur = e;
     console.log(data);
   }
 
-  function redHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    var currVal = parseFloat(e.target.value);
-    setRed(currVal);
-    data.red = currVal;
+  function redHandler(e: number) {
+    setRed(e);
+    data.red = e;
     console.log(data);
   }
-  function greenHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    var currVal = parseFloat(e.target.value);
-    setGreen(currVal);
-    data.green = currVal;
+  function greenHandler(e: number) {
+    setGreen(e);
+    data.green = e;
     console.log(data);
   }
-  function blueHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    var currVal = parseFloat(e.target.value);
-    setBlue(currVal);
-    data.blue = currVal;
+  function blueHandler(e: number) {
+    setBlue(e);
+    data.blue = e;
     console.log(data);
   }
-  function alphaHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    var currVal = parseFloat(e.target.value);
-    setAlpha(currVal);
-    data.alpha = currVal;
+  function alphaHandler(e: number) {
+    setAlpha(e);
+    data.alpha = e;
     console.log(data);
   }
 
@@ -47,8 +45,8 @@ export default function () {
         min={0}
         max={100}
         step={1}
-        value={blur}
-        onChange={blurHandler}
+        value={context.blur}
+        onChange={context.changeBlur}
         borderColor={''}
         text="Blur"
       />
