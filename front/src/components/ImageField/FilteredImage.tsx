@@ -33,17 +33,17 @@ export default function FilteredImage({ imageURL }: ImageProps) {
         // Konva.Filters.HSV,
         // Konva.Filters.Noise,
         // Konva.Filters.Pixelate,
-        // Konva.Filters.RGBA,
+        Konva.Filters.RGBA,
       ]}
-      blurRadius={context.blur}
+      blurRadius={context.filters.blur}
       luminance={0}
       value={0}
       noise={0}
       pixelSize={0}
-      red={255}
-      green={255}
-      blue={255}
-      alpha={0}
+      red={context.filters.red}
+      green={context.filters.green}
+      blue={context.filters.blue}
+      alpha={context.filters.alpha}
     />
   );
 }
