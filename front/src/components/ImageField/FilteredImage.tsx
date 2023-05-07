@@ -3,8 +3,7 @@ import { Image as ImageShape } from 'konva/lib/shapes/Image';
 import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
-import data from '../../assets/data/data.json';
-import { MyContext } from '../../App';
+import { FilterContext } from '../Filters/FilterContext';
 
 interface ImageProps {
   imageURL: string;
@@ -14,7 +13,7 @@ export default function FilteredImage({ imageURL }: ImageProps) {
   const [image] = useImage(imageURL);
   const imageRef = React.useRef<ImageShape>(null);
 
-  const context = useContext(MyContext);
+  const context = useContext(FilterContext);
 
   useEffect(() => {
     if (image) {

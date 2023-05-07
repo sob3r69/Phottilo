@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import Slider from '../../ParamField/Slider/Slider';
-import { MyContext } from '../../../App';
+import { FilterContext } from '../../Filters/FilterContext';
 
 export default function () {
-  const context = useContext(MyContext);
+  const context = useContext(FilterContext);
 
   return (
     <div className="param-container">

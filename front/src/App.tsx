@@ -5,23 +5,7 @@ import { useState, createContext, useContext, useMemo } from 'react';
 import { ImageField } from './components/ImageField/ImageField';
 import { ParamField } from './components/ParamField/ParamField';
 import { modes } from './components/Modes/ModeTypes';
-
-export const MyContext = createContext({
-  filters: {
-    blur: 0,
-    red: 0,
-    green: 0,
-    blue: 0,
-    alpha: 0,
-  },
-  funcs: {
-    changeBlur: (n: number) => {},
-    changeRed: (n: number) => {},
-    changeGreen: (n: number) => {},
-    changeBlue: (n: number) => {},
-    changeAlpha: (n: number) => {},
-  },
-});
+import { FilterContext } from './components/Filters/FilterContext';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -39,12 +23,21 @@ function App() {
   const changeBlue = (n = 1) => setBlue(n);
   const changeAlpha = (n = 1) => setAlpha(n);
 
+  const imageFilters = { blur, red, green, blue, alpha };
+  const changeImageFilters = {
+    changeBlur,
+    changeRed,
+    changeGreen,
+    changeBlue,
+    changeAlpha,
+  };
+
   return (
     <div className="App">
-      <MyContext.Provider
+      <FilterContext.Provider
         value={{
-          filters: { blur, red, green, blue, alpha },
-          funcs: { changeBlur, changeRed, changeGreen, changeBlue, changeAlpha },
+          filters: imageFilters,
+          funcs: changeImageFilters,
         }}
       >
         <Toolbox selectedMode={selectedMode} setMode={setMode} />
@@ -53,7 +46,7 @@ function App() {
           <ParamField selectedMode={selectedMode} />
         </div>
         <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
-      </MyContext.Provider>
+      </FilterContext.Provider>
     </div>
   );
 }
