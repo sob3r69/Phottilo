@@ -5,12 +5,7 @@ import { useState, createContext, useContext, useMemo } from 'react';
 import { ImageField } from './components/ImageField/ImageField';
 import { ParamField } from './components/ParamField/ParamField';
 import { modes } from './components/Modes/ModeTypes';
-import { FilterContext } from './components/Contexts/FilterContext';
-
-export const ParamContext = createContext({
-  currParam: <p>Hello</p>,
-  setParam: (e: JSX.Element) => {},
-});
+import { ParamContext, FilterContext } from './components/Contexts/Contexts';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState<File>();

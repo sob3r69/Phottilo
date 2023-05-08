@@ -16,3 +16,8 @@ export const FilterContext = createContext({
     changeAlpha: (n: number) => {},
   },
 });
+
+export const ParamContext = createContext({
+  currParam: <p>Hello</p>,
+  setParam: (e: JSX.Element) => {},
+});

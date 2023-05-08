@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Mode } from '../Modes/ModeTypes';
-import { ParamContext } from '../../App';
+import { ParamContext } from '../Contexts/Contexts';
 
 // interface ParamFieldProps {
 //   selectedMode: Mode;

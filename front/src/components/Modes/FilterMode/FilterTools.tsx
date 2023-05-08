@@ -4,7 +4,7 @@ import { TbColorFilter } from 'react-icons/tb';
 import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
 import BlurParams from './FilterParams/BlurParams';
 import { useContext } from 'react';
-import { ParamContext } from '../../../App';
+import { ParamContext } from '../../Contexts/Contexts';
 import ColorParams from './FilterParams/ColorParams';
 
 export default function () {

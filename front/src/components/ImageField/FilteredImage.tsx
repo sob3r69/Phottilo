@@ -3,7 +3,7 @@ import { Image as ImageShape } from 'konva/lib/shapes/Image';
 import React, { useContext, useEffect } from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
-import { FilterContext } from '../Contexts/FilterContext';
+import { FilterContext } from '../Contexts/Contexts';
 
 interface ImageProps {
   imageURL: string;
