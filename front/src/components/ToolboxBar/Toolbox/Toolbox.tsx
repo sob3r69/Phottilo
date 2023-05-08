@@ -1,10 +1,5 @@
-import ToolButton from '../ToolButton/ToolButton';
 import ModeChanger from '../ModeChanger/ModeChanger';
-import { Mode, modes } from '../../Modes/ModeTypes';
-
-import Tools from '../../Modes/PaintMode/PaintTools';
-
-import { BsBrush, BsEraser, BsPentagon } from 'react-icons/bs';
+import { Mode } from '../../Modes/ModeTypes';
 
 import './style.css';
 

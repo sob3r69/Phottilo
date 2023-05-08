@@ -1,4 +1,3 @@
-import FilterParams from './FilterMode/FilterParams';
 import FilterTools from './FilterMode/FilterTools';
 import PaintParams from './PaintMode/PaintParams';
 import PaintTools from './PaintMode/PaintTools';
@@ -19,7 +18,6 @@ export const modes = {
   filter: {
     name: 'Filter Mode',
     tools: <FilterTools />,
-    params: <FilterParams />,
   },
   resize: {
     name: 'Resize Mode',

@@ -1,14 +1,17 @@
+import { useContext } from 'react';
 import { Mode } from '../Modes/ModeTypes';
+import { ParamContext } from '../../App';
 
-interface ParamFieldProps {
-  selectedMode: Mode;
-}
+// interface ParamFieldProps {
+//   selectedMode: Mode;
+// }
 
-export function ParamField({ selectedMode }: ParamFieldProps) {
+export function ParamField() {
+  const context = useContext(ParamContext);
   return (
     <div className="parameters-field">
-      {selectedMode.name}
-      {selectedMode.params}
+      ToolName
+      {context.currParam}
     </div>
   );
 }

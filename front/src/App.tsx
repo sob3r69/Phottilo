@@ -5,7 +5,12 @@ import { useState, createContext, useContext, useMemo } from 'react';
 import { ImageField } from './components/ImageField/ImageField';
 import { ParamField } from './components/ParamField/ParamField';
 import { modes } from './components/Modes/ModeTypes';
-import { FilterContext } from './components/Filters/FilterContext';
+import { FilterContext } from './components/Contexts/FilterContext';
+
+export const ParamContext = createContext({
+  currParam: <p>Hello</p>,
+  setParam: (e: JSX.Element) => {},
+});
 
 function App() {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -32,21 +37,27 @@ function App() {
     changeAlpha,
   };
 
+  const [param, setParam] = useState(<p>Select a tool</p>);
+
+  const paramValue = { currParam: param, setParam: (e: JSX.Element) => setParam(e) };
+
   return (
     <div className="App">
-      <FilterContext.Provider
-        value={{
-          filters: imageFilters,
-          funcs: changeImageFilters,
-        }}
-      >
-        <Toolbox selectedMode={selectedMode} setMode={setMode} />
-        <div className="App-row">
-          <ImageField selectedImage={selectedImage!} />
-          <ParamField selectedMode={selectedMode} />
-        </div>
-        <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
-      </FilterContext.Provider>
+      <ParamContext.Provider value={paramValue}>
+        <FilterContext.Provider
+          value={{
+            filters: imageFilters,
+            funcs: changeImageFilters,
+          }}
+        >
+          <Toolbox selectedMode={selectedMode} setMode={setMode} />
+          <div className="App-row">
+            <ImageField selectedImage={selectedImage!} />
+            <ParamField />
+          </div>
+          <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
+        </FilterContext.Provider>
+      </ParamContext.Provider>
     </div>
   );
 }

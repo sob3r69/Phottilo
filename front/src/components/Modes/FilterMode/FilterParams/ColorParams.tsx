@@ -1,21 +1,12 @@
 import { useContext } from 'react';
-import Slider from '../../ParamField/Slider/Slider';
-import { FilterContext } from '../../Filters/FilterContext';
+import { FilterContext } from '../../../Contexts/FilterContext';
+import Slider from '../../../ParamField/Slider/Slider';
 
-export default function () {
+export default () => {
   const context = useContext(FilterContext);
 
   return (
     <div className="param-container">
-      <Slider
-        min={0}
-        max={100}
-        step={1}
-        value={context.filters.blur}
-        onChange={context.funcs.changeBlur}
-        borderColor={''}
-        text="Blur"
-      />
       <Slider
         min={0}
         max={255}
@@ -50,4 +41,4 @@ export default function () {
       />
     </div>
   );
-}
+};

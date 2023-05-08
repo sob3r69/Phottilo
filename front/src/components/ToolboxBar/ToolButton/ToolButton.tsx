@@ -1,22 +1,21 @@
 import { IconType } from 'react-icons/lib';
 import './style.css';
-import { useContext } from 'react';
-import { MyContext } from '../../../App';
 
 interface BtnProps {
   hintText: string;
   Icon: IconType;
-  onClick: () => void;
+  value: JSX.Element;
+  onClick: (e: JSX.Element) => void;
 }
 
-export default function ToolButton({ Icon, hintText, onClick }: BtnProps) {
+export default function ToolButton({ Icon, hintText, onClick, value }: BtnProps) {
   return (
     <div className="toolbutton-container">
       <button
         aria-label="tool-button"
         type="button"
         className="tool-button"
-        onClick={() => onClick()}
+        onClick={() => onClick(value)}
       >
         <Icon className="tool-button-icon" size="1em" />
       </button>
