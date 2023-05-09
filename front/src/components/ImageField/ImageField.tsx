@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './style.css';
-import { Layer, Rect, Stage, Image } from 'react-konva';
+import { Layer, Rect, Stage, Image, Line } from 'react-konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import FilteredImage from './FilteredImage';
 interface ImageFieldProps {
@@ -54,18 +54,68 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     });
   };
 
+  const [lines, setLines] = useState<any>([]);
+  const isDrawing = useRef(false);
+
+  const handleMouseDown = (e: any) => {
+    isDrawing.current = true;
+    const pos = e.target.getStage().getPointerPosition();
+    setLines([...lines, { points: [pos.x, pos.y] }]);
+  };
+
+  const handleMouseMove = (e: any) => {
+    // no drawing - skipping
+    if (!isDrawing.current) {
+      return;
+    }
+    const stage = e.target.getStage();
+    const point = stage.getPointerPosition();
+
+    // To draw line
+    let lastLine: any = lines[lines.length - 1];
+
+    if (lastLine) {
+      // add point
+      lastLine.points = lastLine.points.concat([point.x, point.y]);
+
+      // replace last
+      lines.splice(lines.length - 1, 1, lastLine);
+      setLines(lines.concat());
+    }
+  };
+
+  const handleMouseUp = () => {
+    isDrawing.current = false;
+  };
+
   return (
     <div className="image-field" ref={imageWrapper}>
       <Stage
         width={dimensions.width}
         height={dimensions.height}
         onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMousemove={handleMouseMove}
+        onMouseup={handleMouseUp}
         scaleX={stage.scale}
         scaleY={stage.scale}
         x={stage.x}
         y={stage.y}
       >
         <Layer>
+          {lines.map((line: any, i: number) => (
+            <Line
+              key={i}
+              points={line.points}
+              stroke="#df4b26"
+              strokeWidth={2}
+              tension={0.5}
+              lineCap="round"
+              globalCompositeOperation={
+                line.tool === 'eraser' ? 'destination-out' : 'source-over'
+              }
+            />
+          ))}
           <FilteredImage imageURL={imageURL} />
         </Layer>
       </Stage>

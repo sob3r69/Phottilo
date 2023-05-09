@@ -25,7 +25,7 @@ export default function FilteredImage({ imageURL }: ImageProps) {
     <Image
       ref={imageRef}
       image={image}
-      draggable={true}
+      draggable={false}
       filters={[
         Konva.Filters.Blur,
         // Konva.Filters.HSL,
