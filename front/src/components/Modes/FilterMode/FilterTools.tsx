@@ -18,13 +18,13 @@ export default function () {
         Icon={MdBlurCircular}
         hintText="Blur"
         value={<BlurParams />}
-        onClick={(e: JSX.Element) => changeParam(e)}
+        onClick={changeParam}
       />
       <ToolButton
         Icon={TbColorFilter}
         hintText="Colors"
         value={<ColorParams />}
-        onClick={(e: JSX.Element) => changeParam(e)}
+        onClick={changeParam}
       />
     </div>
   );

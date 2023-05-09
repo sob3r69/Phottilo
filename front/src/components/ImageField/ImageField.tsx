@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './style.css';
 import { Layer, Rect, Stage, Image, Line } from 'react-konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import FilteredImage from './FilteredImage';
+import { PaintContext } from '../Contexts/Contexts';
+import rgb2hex from 'rgb2hex';
 interface ImageFieldProps {
   selectedImage: File;
 }
@@ -54,13 +56,15 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     });
   };
 
+  //drawing
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
+  const tool = 'pen';
 
   const handleMouseDown = (e: any) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
   };
 
   const handleMouseMove = (e: any) => {
@@ -88,6 +92,17 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     isDrawing.current = false;
   };
 
+  const context = useContext(PaintContext);
+  const hex = rgb2hex(
+    'rgb(' +
+      context.settings.red +
+      ',' +
+      context.settings.green +
+      ',' +
+      context.settings.blue +
+      ')',
+  );
+
   return (
     <div className="image-field" ref={imageWrapper}>
       <Stage
@@ -103,20 +118,21 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
         y={stage.y}
       >
         <Layer>
+          <FilteredImage imageURL={imageURL} />
           {lines.map((line: any, i: number) => (
             <Line
               key={i}
               points={line.points}
-              stroke="#df4b26"
-              strokeWidth={2}
-              tension={0.5}
+              stroke={hex.hex}
+              strokeWidth={context.settings.size}
+              tension={context.settings.tension}
+              dash={[context.settings.gapLength, context.settings.gap]}
               lineCap="round"
               globalCompositeOperation={
                 line.tool === 'eraser' ? 'destination-out' : 'source-over'
               }
             />
           ))}
-          <FilteredImage imageURL={imageURL} />
         </Layer>
       </Stage>
     </div>
