@@ -3,7 +3,7 @@ import './style.css';
 import { Layer, Rect, Stage, Image, Line } from 'react-konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import FilteredImage from './FilteredImage';
-import { PaintContext } from '../Contexts/Contexts';
+import { PaintContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 interface ImageFieldProps {
   selectedImage: File;

@@ -9,11 +9,11 @@ export const FilterContext = createContext({
     alpha: 0,
   },
   funcs: {
-    changeBlur: (n: number) => {},
-    changeRed: (n: number) => {},
-    changeGreen: (n: number) => {},
-    changeBlue: (n: number) => {},
-    changeAlpha: (n: number) => {},
+    changeBlur: () => {},
+    changeRed: () => {},
+    changeGreen: () => {},
+    changeBlue: () => {},
+    changeAlpha: () => {},
   },
 });
 
@@ -38,9 +38,9 @@ export const PaintContext = createContext({
     changeTension: () => {},
     changeGapLength: () => {},
     changeGap: () => {},
-    changeRed: (n: number) => {},
-    changeGreen: (n: number) => {},
-    changeBlue: (n: number) => {},
-    changeAlpha: (n: number) => {},
+    changeRed: () => {},
+    changeGreen: () => {},
+    changeBlue: () => {},
+    changeAlpha: () => {},
   },
 });

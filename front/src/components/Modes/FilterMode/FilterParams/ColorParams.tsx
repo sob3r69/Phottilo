@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FilterContext } from '../../../Contexts/Contexts';
+import { FilterContext } from '../../../../Contexts/Contexts';
 import Slider from '../../../ParamField/Slider/Slider';
 
 export default () => {

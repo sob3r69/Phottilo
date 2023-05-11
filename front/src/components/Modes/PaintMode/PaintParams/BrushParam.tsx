@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PaintContext } from '../../../Contexts/Contexts';
+import { PaintContext } from '../../../../Contexts/Contexts';
 import Slider from '../../../ParamField/Slider/Slider';
 
 export default () => {
