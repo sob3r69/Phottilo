@@ -24,23 +24,33 @@ export const ParamContext = createContext({
 
 export const PaintContext = createContext({
   settings: {
-    size: 0,
-    tension: 0,
-    gapLength: 0,
-    gap: 0,
-    red: 0,
-    green: 0,
-    blue: 0,
-    alpha: 0,
+    eraser: {
+      size: 0,
+    },
+    brush: {
+      size: 0,
+      tension: 0,
+      gapLength: 0,
+      gap: 0,
+      red: 0,
+      green: 0,
+      blue: 0,
+      alpha: 0,
+    },
   },
   funcs: {
-    changeSize: () => {},
-    changeTension: () => {},
-    changeGapLength: () => {},
-    changeGap: () => {},
-    changeRed: () => {},
-    changeGreen: () => {},
-    changeBlue: () => {},
-    changeAlpha: () => {},
+    eraser: {
+      changeSize: () => {},
+    },
+    brush: {
+      changeSize: () => {},
+      changeTension: () => {},
+      changeGapLength: () => {},
+      changeGap: () => {},
+      changeRed: () => {},
+      changeGreen: () => {},
+      changeBlue: () => {},
+      changeAlpha: () => {},
+    },
   },
 });

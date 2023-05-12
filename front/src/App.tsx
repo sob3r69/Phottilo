@@ -46,24 +46,34 @@ function App() {
 
   const paintValue = {
     settings: {
-      size: size,
-      tension: tension,
-      gapLength: gapLength,
-      gap: gap,
-      red: brushRed,
-      green: brushGreen,
-      blue: brushBlue,
-      alpha: brushAlpha,
+      eraser: {
+        size: 0,
+      },
+      brush: {
+        size: size,
+        tension: tension,
+        gapLength: gapLength,
+        gap: gap,
+        red: brushRed,
+        green: brushGreen,
+        blue: brushBlue,
+        alpha: brushAlpha,
+      },
     },
     funcs: {
-      changeSize: (n = 1) => setSize(n),
-      changeTension: (n = 1) => setTension(n),
-      changeGapLength: (n = 1) => setGapLength(n),
-      changeGap: (n = 1) => setGap(n),
-      changeRed: (n = 1) => setBrushRed(n),
-      changeGreen: (n = 1) => setBrushGreen(n),
-      changeBlue: (n = 1) => setBrushBlue(n),
-      changeAlpha: (n = 1) => setBrushAlpha(n),
+      eraser: {
+        changeSize: () => {},
+      },
+      brush: {
+        changeSize: (n = 1) => setSize(n),
+        changeTension: (n = 1) => setTension(n),
+        changeGapLength: (n = 1) => setGapLength(n),
+        changeGap: (n = 1) => setGap(n),
+        changeRed: (n = 1) => setBrushRed(n),
+        changeGreen: (n = 1) => setBrushGreen(n),
+        changeBlue: (n = 1) => setBrushBlue(n),
+        changeAlpha: (n = 1) => setBrushAlpha(n),
+      },
     },
   };
 

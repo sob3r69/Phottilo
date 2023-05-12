@@ -25,6 +25,7 @@ export default function StatusBar({ selectedImage, setSelectedImage }: StatusBar
         ></input>
         {displayName()}
       </label>
+      <div>ver 0.0.1</div>
     </div>
   );
 }

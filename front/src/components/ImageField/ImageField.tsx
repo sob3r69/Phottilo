@@ -19,6 +19,21 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     y: 0,
   });
 
+  const [lines, setLines] = useState<any>([]);
+  const isDrawing = useRef(false);
+  const tool = 'pen';
+
+  const context = useContext(PaintContext);
+  const hex = rgb2hex(
+    'rgb(' +
+      context.settings.brush.red +
+      ',' +
+      context.settings.brush.green +
+      ',' +
+      context.settings.brush.blue +
+      ')',
+  );
+
   var imageWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,10 +72,6 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
   };
 
   //drawing
-  const [lines, setLines] = useState<any>([]);
-  const isDrawing = useRef(false);
-  const tool = 'pen';
-
   const handleMouseDown = (e: any) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
@@ -92,17 +103,6 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     isDrawing.current = false;
   };
 
-  const context = useContext(PaintContext);
-  const hex = rgb2hex(
-    'rgb(' +
-      context.settings.red +
-      ',' +
-      context.settings.green +
-      ',' +
-      context.settings.blue +
-      ')',
-  );
-
   return (
     <div className="image-field" ref={imageWrapper}>
       <Stage
@@ -124,9 +124,9 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
               key={i}
               points={line.points}
               stroke={hex.hex}
-              strokeWidth={context.settings.size}
-              tension={context.settings.tension}
-              dash={[context.settings.gapLength, context.settings.gap]}
+              strokeWidth={context.settings.brush.size}
+              tension={context.settings.brush.tension}
+              dash={[context.settings.brush.gapLength, context.settings.brush.gap]}
               lineCap="round"
               globalCompositeOperation={
                 line.tool === 'eraser' ? 'destination-out' : 'source-over'
