@@ -1,11 +1,10 @@
-.App {
-  font-family: susan, sans-serif;
+.workflow-container {
   display: flex;
   height: 100%;
   flex-direction: column;
 }
 
-/* .App-row {
+.App-row {
   display: flex;
   height: 100%;
   flex-direction: row;
@@ -25,4 +24,4 @@
   padding: 8px;
   border-radius: 8px;
   background-color: var(--elementColor);
-} */
+}
