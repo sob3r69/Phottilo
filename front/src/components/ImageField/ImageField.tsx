@@ -1,10 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import './style.css';
+import './ImageField.css';
 import { Layer, Rect, Stage, Image, Line } from 'react-konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import FilteredImage from './FilteredImage';
 import { PaintContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
+import useImage from 'use-image';
 interface ImageFieldProps {
   selectedImage: File;
 }
@@ -12,6 +13,7 @@ interface ImageFieldProps {
 export function ImageField({ selectedImage }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [image] = useImage(imageURL);
 
   const [stage, setStage] = useState({
     scale: 1,
@@ -106,9 +108,9 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
   return (
     <div className="image-field" ref={imageWrapper}>
       <Stage
-        width={dimensions.width}
-        height={dimensions.height}
-        onWheel={handleWheel}
+        width={image?.width}
+        height={image?.height}
+        // onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
@@ -118,7 +120,7 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
         y={stage.y}
       >
         <Layer>
-          <FilteredImage imageURL={imageURL} />
+          <FilteredImage image={image} />
           {lines.map((line: any, i: number) => (
             <Line
               key={i}

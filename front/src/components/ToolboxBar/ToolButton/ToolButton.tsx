@@ -1,5 +1,5 @@
 import { IconType } from 'react-icons/lib';
-import './style.css';
+import './ToolButton.css';
 
 interface BtnProps {
   hintText: string;

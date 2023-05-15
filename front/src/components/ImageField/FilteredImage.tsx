@@ -6,11 +6,11 @@ import useImage from 'use-image';
 import { FilterContext } from '../../Contexts/Contexts';
 
 interface ImageProps {
-  imageURL: string;
+  image: HTMLImageElement | undefined;
 }
 
-export default function FilteredImage({ imageURL }: ImageProps) {
-  const [image] = useImage(imageURL);
+export default function FilteredImage({ image }: ImageProps) {
+  // const [image] = useImage(imageURL);
   const imageRef = React.useRef<ImageShape>(null);
 
   const context = useContext(FilterContext);
