@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import './style.css';
+import './StatusBar.css';
 
 interface StatusBarProps {
   selectedImage: File;
@@ -25,7 +25,10 @@ export default function StatusBar({ selectedImage, setSelectedImage }: StatusBar
         ></input>
         {displayName()}
       </label>
-      <div>ver 0.0.2</div>
+      <div className="version-container">
+        <a href="https://github.com/sob3r69/Phottilo">ver 0.0.3</a>
+        <div className="version-hint">github.com/sob3r69/Phottilo</div>
+      </div>
     </div>
   );
 }
