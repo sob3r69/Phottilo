@@ -33,7 +33,12 @@ export default () => {
   };
 
   const [param, setParam] = useState(<p>Select a tool</p>);
-  const paramValue = { currParam: param, setParam: (e: JSX.Element) => setParam(e) };
+  const [paramName, setParamName] = useState('');
+  const paramValue = {
+    currParam: { paramName, param },
+    setParam: (e: JSX.Element) => setParam(e),
+    setParamName: (name: string) => setParamName(name),
+  };
 
   const [size, setSize] = useState(1);
   const [tension, setTension] = useState(0.5);

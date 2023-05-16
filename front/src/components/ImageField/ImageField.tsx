@@ -3,9 +3,10 @@ import './ImageField.css';
 import { Layer, Rect, Stage, Image, Line } from 'react-konva';
 import { KonvaEventObject } from 'konva/lib/Node';
 import FilteredImage from './FilteredImage';
-import { PaintContext } from '../../Contexts/Contexts';
+import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
+import PaintParams from '../Modes/PaintMode/PaintParams';
 interface ImageFieldProps {
   selectedImage: File;
 }
@@ -23,16 +24,18 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
 
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
-  const tool = 'pen';
+  const [tool, setTool] = useState('pen');
 
-  const context = useContext(PaintContext);
+  const paintContext = useContext(PaintContext);
+  const paramContext = useContext(ParamContext);
+
   const hex = rgb2hex(
     'rgb(' +
-      context.settings.brush.red +
+      paintContext.settings.brush.red +
       ',' +
-      context.settings.brush.green +
+      paintContext.settings.brush.green +
       ',' +
-      context.settings.brush.blue +
+      paintContext.settings.brush.blue +
       ')',
   );
 
@@ -53,31 +56,34 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     }
   }, []);
 
-  const handleWheel = (e: KonvaEventObject<WheelEvent>) => {
-    e.evt.preventDefault();
+  // const handleWheel = (e: KonvaEventObject<WheelEvent>) => {
+  //   e.evt.preventDefault();
 
-    const scaleBy = 1.2;
-    const stage = e.target.getStage()!;
-    const oldScale = stage.scaleX();
-    const mousePointTo = {
-      x: stage.getPointerPosition()!.x / oldScale - stage.x() / oldScale,
-      y: stage.getPointerPosition()!.y / oldScale - stage.y() / oldScale,
-    };
+  //   const scaleBy = 1.2;
+  //   const stage = e.target.getStage()!;
+  //   const oldScale = stage.scaleX();
+  //   const mousePointTo = {
+  //     x: stage.getPointerPosition()!.x / oldScale - stage.x() / oldScale,
+  //     y: stage.getPointerPosition()!.y / oldScale - stage.y() / oldScale,
+  //   };
 
-    const newScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
+  //   const newScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
-    setStage({
-      scale: newScale,
-      x: (stage.getPointerPosition()!.x / newScale - mousePointTo.x) * newScale,
-      y: (stage.getPointerPosition()!.y / newScale - mousePointTo.y) * newScale,
-    });
-  };
+  //   setStage({
+  //     scale: newScale,
+  //     x: (stage.getPointerPosition()!.x / newScale - mousePointTo.x) * newScale,
+  //     y: (stage.getPointerPosition()!.y / newScale - mousePointTo.y) * newScale,
+  //   });
+  // };
 
   //drawing
   const handleMouseDown = (e: any) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    if (paramContext.currParam.paramName === 'brush') {
+      console.log('yes');
+    }
   };
 
   const handleMouseMove = (e: any) => {
@@ -126,9 +132,12 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
               key={i}
               points={line.points}
               stroke={hex.hex}
-              strokeWidth={context.settings.brush.size}
-              tension={context.settings.brush.tension}
-              dash={[context.settings.brush.gapLength, context.settings.brush.gap]}
+              strokeWidth={paintContext.settings.brush.size}
+              tension={paintContext.settings.brush.tension}
+              dash={[
+                paintContext.settings.brush.gapLength,
+                paintContext.settings.brush.gap,
+              ]}
               lineCap="round"
               globalCompositeOperation={
                 line.tool === 'eraser' ? 'destination-out' : 'source-over'

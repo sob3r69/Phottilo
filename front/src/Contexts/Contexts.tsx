@@ -18,8 +18,12 @@ export const FilterContext = createContext({
 });
 
 export const ParamContext = createContext({
-  currParam: <p>Hello</p>,
+  currParam: {
+    paramName: 'none',
+    param: <p>Hello</p>,
+  },
   setParam: (e: JSX.Element) => {},
+  setParamName: (name: string) => {},
 });
 
 export const PaintContext = createContext({

@@ -8,8 +8,13 @@ import EraserParams from './PaintParams/EraserParams';
 
 export default function () {
   const context = useContext(ParamContext);
+
   function changeParam(e: JSX.Element) {
     context.setParam(e);
+  }
+
+  function changeParamName(name: string) {
+    context.setParamName(name);
   }
 
   return (
@@ -17,14 +22,16 @@ export default function () {
       <ToolButton
         Icon={BsBrush}
         hintText="Brush"
-        value={<BrushParam />}
-        onClick={changeParam}
+        value={{ name: 'brush', e: <BrushParam /> }}
+        changeParam={changeParam}
+        changeParamName={changeParamName}
       />
       <ToolButton
         Icon={BsEraser}
         hintText="Eraser"
-        value={<EraserParams />}
-        onClick={changeParam}
+        value={{ name: 'eraser', e: <EraserParams /> }}
+        changeParam={changeParam}
+        changeParamName={changeParamName}
       />
       {/* <ToolButton Icon={BsPentagon} hintText="Figure" onClick={handler} /> */}
     </div>

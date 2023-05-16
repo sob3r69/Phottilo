@@ -11,7 +11,7 @@ export function ParamField() {
   return (
     <div className="parameters-field">
       ToolName
-      {context.currParam}
+      {context.currParam.param}
     </div>
   );
 }

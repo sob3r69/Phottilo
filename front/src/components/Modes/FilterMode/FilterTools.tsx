@@ -12,19 +12,26 @@ export default function () {
   function changeParam(e: JSX.Element) {
     context.setParam(e);
   }
+
+  function changeParamName(name: string) {
+    context.setParamName(name);
+  }
+
   return (
     <div className="tools-container">
       <ToolButton
         Icon={MdBlurCircular}
         hintText="Blur"
-        value={<BlurParams />}
-        onClick={changeParam}
+        value={{ name: 'blur', e: <BlurParams /> }}
+        changeParam={changeParam}
+        changeParamName={changeParamName}
       />
       <ToolButton
         Icon={TbColorFilter}
         hintText="Colors"
-        value={<ColorParams />}
-        onClick={changeParam}
+        value={{ name: 'colors', e: <ColorParams /> }}
+        changeParam={changeParam}
+        changeParamName={changeParamName}
       />
     </div>
   );

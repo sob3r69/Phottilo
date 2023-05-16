@@ -4,18 +4,28 @@ import './ToolButton.css';
 interface BtnProps {
   hintText: string;
   Icon: IconType;
-  value: JSX.Element;
-  onClick: (e: JSX.Element) => void;
+  value: { name: string; e: JSX.Element };
+  changeParam: (e: JSX.Element) => void;
+  changeParamName: (name: string) => void;
 }
 
-export default function ToolButton({ Icon, hintText, onClick, value }: BtnProps) {
+export default function ToolButton({
+  Icon,
+  hintText,
+  changeParam,
+  changeParamName,
+  value,
+}: BtnProps) {
   return (
     <div className="toolbutton-container">
       <button
         aria-label="tool-button"
         type="button"
         className="tool-button"
-        onClick={() => onClick(value)}
+        onClick={() => {
+          changeParam(value.e);
+          changeParamName(value.name);
+        }}
       >
         <Icon className="tool-button-icon" size="1em" />
       </button>
