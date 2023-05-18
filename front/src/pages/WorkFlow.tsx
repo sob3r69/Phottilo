@@ -49,10 +49,12 @@ export default () => {
   const [brushBlue, setBrushBlue] = useState(1);
   const [brushAlpha, setBrushAlpha] = useState(0);
 
+  const [eraserSize, setEraserSize] = useState(1);
+
   const paintValue = {
     settings: {
       eraser: {
-        size: 0,
+        size: eraserSize,
       },
       brush: {
         size: size,
@@ -67,7 +69,7 @@ export default () => {
     },
     funcs: {
       eraser: {
-        changeSize: () => {},
+        changeSize: (n = 1) => setEraserSize(n),
       },
       brush: {
         changeSize: (n = 1) => setSize(n),

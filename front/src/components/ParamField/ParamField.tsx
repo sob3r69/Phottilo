@@ -10,7 +10,7 @@ export function ParamField() {
   const context = useContext(ParamContext);
   return (
     <div className="parameters-field">
-      ToolName
+      Brush
       {context.currParam.param}
     </div>
   );

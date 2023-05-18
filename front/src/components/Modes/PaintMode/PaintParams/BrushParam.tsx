@@ -15,14 +15,14 @@ export default () => {
         onChange={context.funcs.brush.changeSize}
         text="Size"
       />
-      <Slider
+      {/* <Slider
         min={0}
         max={50}
         step={1}
         value={context.settings.brush.tension}
         onChange={context.funcs.brush.changeTension}
         text="Как эту хуйню описать"
-      />
+      /> */}
       <Slider
         min={0}
         max={100}

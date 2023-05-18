@@ -42,6 +42,10 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
   var imageWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    paramContext.currParam.paramName === 'brush' ? setTool('pen') : setTool('eraser');
+  });
+
+  useEffect(() => {
     if (selectedImage) {
       setImageURLimageURL(URL.createObjectURL(selectedImage));
     }
@@ -81,9 +85,6 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setLines([...lines, { tool, points: [pos.x, pos.y] }]);
-    if (paramContext.currParam.paramName === 'brush') {
-      console.log('yes');
-    }
   };
 
   const handleMouseMove = (e: any) => {
@@ -132,7 +133,11 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
               key={i}
               points={line.points}
               stroke={hex.hex}
-              strokeWidth={paintContext.settings.brush.size}
+              strokeWidth={
+                paramContext.currParam.paramName === 'brush'
+                  ? paintContext.settings.brush.size
+                  : paintContext.settings.eraser.size
+              }
               tension={paintContext.settings.brush.tension}
               dash={[
                 paintContext.settings.brush.gapLength,
