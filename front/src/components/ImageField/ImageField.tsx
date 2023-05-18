@@ -7,6 +7,7 @@ import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import PaintParams from '../Modes/PaintMode/PaintParams';
+import CustomLine from './CustomLine';
 interface ImageFieldProps {
   selectedImage: File;
 }
@@ -40,10 +41,6 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
   );
 
   var imageWrapper = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    paramContext.currParam.paramName === 'brush' ? setTool('pen') : setTool('eraser');
-  });
 
   useEffect(() => {
     if (selectedImage) {
@@ -82,6 +79,7 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
 
   //drawing
   const handleMouseDown = (e: any) => {
+    paramContext.currParam.paramName === 'brush' ? setTool('pen') : setTool('eraser');
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
     setLines([...lines, { tool, points: [pos.x, pos.y] }]);
@@ -129,24 +127,16 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
         <Layer>
           <FilteredImage image={image} />
           {lines.map((line: any, i: number) => (
-            <Line
+            <CustomLine
               key={i}
-              points={line.points}
-              stroke={hex.hex}
-              strokeWidth={
-                paramContext.currParam.paramName === 'brush'
-                  ? paintContext.settings.brush.size
-                  : paintContext.settings.eraser.size
-              }
+              color={hex.hex}
+              line={line}
+              width={paintContext.settings.brush.size}
               tension={paintContext.settings.brush.tension}
-              dash={[
+              gap={[
                 paintContext.settings.brush.gapLength,
                 paintContext.settings.brush.gap,
               ]}
-              lineCap="round"
-              globalCompositeOperation={
-                line.tool === 'eraser' ? 'destination-out' : 'source-over'
-              }
             />
           ))}
         </Layer>
