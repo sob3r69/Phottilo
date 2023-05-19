@@ -7,12 +7,14 @@ interface LineProps {
   width: number;
   tension: number;
   gap: number[];
+  tool: string;
 }
 
-export default ({ line, color, width, gap, tension }: LineProps) => {
+const BrushLine = ({ line, color, width, gap, tension, tool }: LineProps) => {
   const thisWidth = useRef(width);
   const thisColor = useRef(color);
   const thisGap = useRef(gap);
+  const thisTool = useRef(tool);
   return (
     <Line
       points={line.points}
@@ -21,7 +23,11 @@ export default ({ line, color, width, gap, tension }: LineProps) => {
       tension={tension}
       dash={thisGap.current}
       lineCap="round"
-      globalCompositeOperation={'source-over'}
+      globalCompositeOperation={
+        thisTool.current === 'brush' ? 'source-over' : 'destination-out'
+      }
     />
   );
 };
+
+export default BrushLine;

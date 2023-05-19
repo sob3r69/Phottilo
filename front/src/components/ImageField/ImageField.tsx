@@ -1,34 +1,29 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
-import { Layer, Rect, Stage, Image, Line } from 'react-konva';
-import { KonvaEventObject } from 'konva/lib/Node';
+import { Layer, Stage } from 'react-konva';
 import FilteredImage from './FilteredImage';
 import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
-import PaintParams from '../Modes/PaintMode/PaintParams';
-import CustomLine from './CustomLine';
+import BrushLine from './BrushLine';
 interface ImageFieldProps {
   selectedImage: File;
 }
 
 export function ImageField({ selectedImage }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [image] = useImage(imageURL);
-
-  const [stage, setStage] = useState({
-    scale: 1,
-    x: 0,
-    y: 0,
-  });
 
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
-  const [tool, setTool] = useState('pen');
 
   const paintContext = useContext(PaintContext);
   const paramContext = useContext(ParamContext);
+
+  const width =
+    paramContext.currParam.paramName === 'brush'
+      ? paintContext.settings.brush.size
+      : paintContext.settings.eraser.size;
 
   const hex = rgb2hex(
     'rgb(' +
@@ -48,41 +43,11 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     }
   }, [selectedImage]);
 
-  useEffect(() => {
-    if (imageWrapper.current?.offsetHeight && imageWrapper.current?.offsetWidth) {
-      setDimensions({
-        width: imageWrapper.current.offsetWidth,
-        height: imageWrapper.current.offsetHeight,
-      });
-    }
-  }, []);
-
-  // const handleWheel = (e: KonvaEventObject<WheelEvent>) => {
-  //   e.evt.preventDefault();
-
-  //   const scaleBy = 1.2;
-  //   const stage = e.target.getStage()!;
-  //   const oldScale = stage.scaleX();
-  //   const mousePointTo = {
-  //     x: stage.getPointerPosition()!.x / oldScale - stage.x() / oldScale,
-  //     y: stage.getPointerPosition()!.y / oldScale - stage.y() / oldScale,
-  //   };
-
-  //   const newScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
-
-  //   setStage({
-  //     scale: newScale,
-  //     x: (stage.getPointerPosition()!.x / newScale - mousePointTo.x) * newScale,
-  //     y: (stage.getPointerPosition()!.y / newScale - mousePointTo.y) * newScale,
-  //   });
-  // };
-
   //drawing
   const handleMouseDown = (e: any) => {
-    paramContext.currParam.paramName === 'brush' ? setTool('pen') : setTool('eraser');
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setLines([...lines, { points: [pos.x, pos.y] }]);
   };
 
   const handleMouseMove = (e: any) => {
@@ -115,28 +80,24 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
       <Stage
         width={image?.width}
         height={image?.height}
-        // onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
-        scaleX={stage.scale}
-        scaleY={stage.scale}
-        x={stage.x}
-        y={stage.y}
       >
         <Layer>
           <FilteredImage image={image} />
           {lines.map((line: any, i: number) => (
-            <CustomLine
+            <BrushLine
               key={i}
               color={hex.hex}
               line={line}
-              width={paintContext.settings.brush.size}
+              width={width}
               tension={paintContext.settings.brush.tension}
               gap={[
                 paintContext.settings.brush.gapLength,
                 paintContext.settings.brush.gap,
               ]}
+              tool={paramContext.currParam.paramName}
             />
           ))}
         </Layer>
