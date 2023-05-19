@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { Mode } from '../Modes/ModeTypes';
 import { ParamContext } from '../../Contexts/Contexts';
 
 // interface ParamFieldProps {
@@ -10,7 +9,8 @@ export function ParamField() {
   const context = useContext(ParamContext);
   return (
     <div className="parameters-field">
-      Brush
+      {context.currParam.paramName.charAt(0).toUpperCase() +
+        context.currParam.paramName.slice(1)}
       {context.currParam.param}
     </div>
   );
