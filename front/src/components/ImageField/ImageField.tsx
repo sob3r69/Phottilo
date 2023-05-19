@@ -43,6 +43,10 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
     }
   }, [selectedImage]);
 
+  useEffect(() => {
+    console.log('render');
+  });
+
   //drawing
   const handleMouseDown = (e: any) => {
     isDrawing.current = true;
@@ -83,6 +87,7 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
+        style={{ height: '1px' }}
       >
         <Layer>
           <FilteredImage image={image} />
