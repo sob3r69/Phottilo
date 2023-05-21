@@ -6,11 +6,14 @@ import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import BrushLine from './BrushLine';
+import { Mode } from '../Modes/ModeTypes';
+import { modes } from '../Modes/ModeTypes';
 interface ImageFieldProps {
   selectedImage: File;
+  selectedMode: Mode;
 }
 
-export function ImageField({ selectedImage }: ImageFieldProps) {
+export function ImageField({ selectedImage, selectedMode }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
 
@@ -84,9 +87,9 @@ export function ImageField({ selectedImage }: ImageFieldProps) {
       <Stage
         width={image?.width}
         height={image?.height}
-        onMouseDown={handleMouseDown}
-        onMousemove={handleMouseMove}
-        onMouseup={handleMouseUp}
+        onMouseDown={selectedMode === modes.paint ? handleMouseDown : undefined}
+        onMousemove={selectedMode === modes.paint ? handleMouseMove : undefined}
+        onMouseup={selectedMode === modes.paint ? handleMouseUp : undefined}
         style={{ height: '1px' }}
       >
         <Layer>

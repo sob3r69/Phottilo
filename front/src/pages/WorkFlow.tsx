@@ -96,7 +96,7 @@ export default () => {
         >
           <PaintContext.Provider value={paintValue}>
             <div className="App-row">
-              <ImageField selectedImage={selectedImage!} />
+              <ImageField selectedImage={selectedImage!} selectedMode={selectedMode} />
               <ParamField />
             </div>
           </PaintContext.Provider>
