@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilterContext, PaintContext, ParamContext } from '../Contexts/Contexts';
 import { ImageField } from '../components/ImageField/ImageField';
 import { ParamField } from '../components/ParamField/ParamField';
@@ -6,6 +6,7 @@ import StatusBar from '../components/StatusBar/StatusBar';
 import Toolbox from '../components/ToolboxBar/Toolbox/Toolbox';
 import { modes } from '../components/Modes/ModeTypes';
 import './workflow.css';
+import StageCreator from '../components/StageCreator/StageCreator';
 
 export default () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -23,14 +24,15 @@ export default () => {
   const changeBlue = (n = 1) => setBlue(n);
   const changeAlpha = (n = 1) => setAlpha(n);
 
-  const imageFilters = { blur, red, green, blue, alpha };
-  const changeImageFilters = {
+  const filters = { blur, red, green, blue, alpha };
+  const funcs = {
     changeBlur,
     changeRed,
     changeGreen,
     changeBlue,
     changeAlpha,
   };
+  const filterValue = { filters, funcs };
 
   const [param, setParam] = useState(<p>Select a tool</p>);
   const [paramName, setParamName] = useState('');
@@ -84,19 +86,30 @@ export default () => {
     },
   };
 
+  const [stageCreator, setSC] = useState<JSX.Element | undefined>(undefined);
+
+  const [stageWidth, setSWidth] = useState(100);
+  const [stageHeight, setSHeight] = useState(100);
+  const stageFuncs = { setSWidth, setSHeight };
+
+  useEffect(() => {
+    setSC(<StageCreator funcs={stageFuncs} />);
+    console.log('StageCreator');
+  }, []);
+
   return (
     <div className="workflow-container">
+      {stageCreator}
       <ParamContext.Provider value={paramValue}>
         <Toolbox selectedMode={selectedMode} setMode={setMode} />
-        <FilterContext.Provider
-          value={{
-            filters: imageFilters,
-            funcs: changeImageFilters,
-          }}
-        >
+        <FilterContext.Provider value={filterValue}>
           <PaintContext.Provider value={paintValue}>
             <div className="App-row">
-              <ImageField selectedImage={selectedImage!} selectedMode={selectedMode} />
+              <ImageField
+                selectedImage={selectedImage!}
+                selectedMode={selectedMode}
+                stageScale={{ stageWidth, stageHeight }}
+              />
               <ParamField />
             </div>
           </PaintContext.Provider>

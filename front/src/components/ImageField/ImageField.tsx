@@ -11,9 +11,10 @@ import { modes } from '../Modes/ModeTypes';
 interface ImageFieldProps {
   selectedImage: File;
   selectedMode: Mode;
+  stageScale: { stageWidth: number; stageHeight: number };
 }
 
-export function ImageField({ selectedImage, selectedMode }: ImageFieldProps) {
+export function ImageField({ selectedImage, selectedMode, stageScale }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
 
@@ -85,8 +86,8 @@ export function ImageField({ selectedImage, selectedMode }: ImageFieldProps) {
   return (
     <div className="image-field" ref={imageWrapper}>
       <Stage
-        width={image?.width}
-        height={image?.height}
+        width={stageScale.stageWidth}
+        height={stageScale.stageHeight}
         onMouseDown={selectedMode === modes.paint ? handleMouseDown : undefined}
         onMousemove={selectedMode === modes.paint ? handleMouseMove : undefined}
         onMouseup={selectedMode === modes.paint ? handleMouseUp : undefined}

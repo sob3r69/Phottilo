@@ -6,7 +6,10 @@ import WorkFlow from './pages/WorkFlow';
 function App() {
   return (
     <div className="App">
-      <WorkFlow />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/workflow" element={<WorkFlow />} />
+      </Routes>
     </div>
   );
 }

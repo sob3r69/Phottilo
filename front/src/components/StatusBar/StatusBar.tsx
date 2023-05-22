@@ -27,7 +27,7 @@ export default function StatusBar({ selectedImage, setSelectedImage }: StatusBar
       </label>
       {/* <button>Save as image</button> */}
       <div className="version-container">
-        <a href="https://github.com/sob3r69/Phottilo">ver 0.0.9</a>
+        <a href="https://github.com/sob3r69/Phottilo">ver 0.1.0</a>
         <div className="version-hint">github.com/sob3r69/Phottilo</div>
       </div>
     </div>
