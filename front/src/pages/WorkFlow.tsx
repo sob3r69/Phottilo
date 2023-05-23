@@ -90,11 +90,13 @@ export default () => {
 
   const [stageWidth, setSWidth] = useState(100);
   const [stageHeight, setSHeight] = useState(100);
-  const stageFuncs = { setSWidth, setSHeight };
+  const [bgColor, setBgColor] = useState('#FFFFFF');
+
+  const stageFuncs = { setSWidth, setSHeight, setBgColor };
   const stageScale = { width: stageWidth, height: stageHeight };
 
   useEffect(() => {
-    setSC(<StageCreator funcs={stageFuncs} />);
+    setSC(<StageCreator funcs={stageFuncs} bgColor={bgColor} />);
     console.log('StageCreator');
   }, []);
 
@@ -110,6 +112,7 @@ export default () => {
                 selectedImage={selectedImage!}
                 selectedMode={selectedMode}
                 stageScale={{ stageWidth, stageHeight }}
+                bgColor={bgColor}
               />
               <ParamField />
             </div>

@@ -20,8 +20,27 @@
 
 .stage-creator-values {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.stage-creator-values-colors {
+  background: var(--backgroundColor);
+  border: 1px solid var(--primaryColor);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.stage-creator-values-colors-hint {
+  margin-bottom: 8px;
+}
+
+.stage-creator-values-width {
+  width: 100%;
+}
+.stage-creator-values-height {
+  width: 100%;
 }
 
 .stage-creator-values input {
@@ -33,6 +52,7 @@
   font-size: 18px;
   padding: 8px;
   margin-top: 16px;
+  margin-left: 8px;
   /* outline: none; */
   width: 40%;
 }
@@ -51,7 +71,10 @@
   margin-top: 8px;
 }
 .stage-creator-buttons button {
-  background: var(--elementColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--backgroundColor);
   border-radius: 8px;
   border: none;
   color: var(--primaryColor);

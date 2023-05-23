@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
-import { Layer, Stage } from 'react-konva';
+import { Layer, Rect, Stage } from 'react-konva';
 import FilteredImage from './FilteredImage';
 import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
@@ -12,9 +12,15 @@ interface ImageFieldProps {
   selectedImage: File;
   selectedMode: Mode;
   stageScale: { stageWidth: number; stageHeight: number };
+  bgColor: string;
 }
 
-export function ImageField({ selectedImage, selectedMode, stageScale }: ImageFieldProps) {
+export function ImageField({
+  selectedImage,
+  selectedMode,
+  stageScale,
+  bgColor,
+}: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
 
@@ -94,6 +100,11 @@ export function ImageField({ selectedImage, selectedMode, stageScale }: ImageFie
         style={{ height: '1px' }}
       >
         <Layer>
+          <Rect
+            fill={bgColor}
+            width={stageScale.stageWidth}
+            height={stageScale.stageHeight}
+          />
           <FilteredImage image={image} />
           {lines.map((line: any, i: number) => (
             <BrushLine
