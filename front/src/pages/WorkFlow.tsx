@@ -91,6 +91,7 @@ export default () => {
   const [stageWidth, setSWidth] = useState(100);
   const [stageHeight, setSHeight] = useState(100);
   const stageFuncs = { setSWidth, setSHeight };
+  const stageScale = { width: stageWidth, height: stageHeight };
 
   useEffect(() => {
     setSC(<StageCreator funcs={stageFuncs} />);
@@ -115,7 +116,11 @@ export default () => {
           </PaintContext.Provider>
         </FilterContext.Provider>
       </ParamContext.Provider>
-      <StatusBar selectedImage={selectedImage!} setSelectedImage={setSelectedImage} />
+      <StatusBar
+        selectedImage={selectedImage!}
+        setSelectedImage={setSelectedImage}
+        stageScale={stageScale}
+      />
     </div>
   );
 };

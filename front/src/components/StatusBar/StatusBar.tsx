@@ -4,9 +4,14 @@ import './StatusBar.css';
 interface StatusBarProps {
   selectedImage: File;
   setSelectedImage: Dispatch<SetStateAction<File | undefined>>;
+  stageScale: { width: number; height: number };
 }
 
-export default function StatusBar({ selectedImage, setSelectedImage }: StatusBarProps) {
+export default function StatusBar({
+  selectedImage,
+  setSelectedImage,
+  stageScale,
+}: StatusBarProps) {
   function displayName(): string {
     if (selectedImage) {
       return selectedImage.name;
@@ -25,9 +30,10 @@ export default function StatusBar({ selectedImage, setSelectedImage }: StatusBar
         ></input>
         {displayName()}
       </label>
+      Canvas size y:{stageScale.height} : x:{stageScale.width}
       {/* <button>Save as image</button> */}
       <div className="version-container">
-        <a href="https://github.com/sob3r69/Phottilo">ver 0.1.0</a>
+        <a href="https://github.com/sob3r69/Phottilo">ver 0.1.1</a>
         <div className="version-hint">github.com/sob3r69/Phottilo</div>
       </div>
     </div>
