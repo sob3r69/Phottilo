@@ -15,6 +15,11 @@ const BrushLine = ({ line, color, width, gap, tension, tool }: LineProps) => {
   const thisColor = useRef(color);
   const thisGap = useRef(gap);
   const thisTool = useRef(tool);
+
+  if (thisTool.current === 'eraser') {
+    thisGap.current = [0, 0];
+  }
+
   return (
     <Line
       points={line.points}
