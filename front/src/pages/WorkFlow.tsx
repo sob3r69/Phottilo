@@ -7,6 +7,7 @@ import Toolbox from '../components/ToolboxBar/Toolbox/Toolbox';
 import { modes } from '../components/Modes/ModeTypes';
 import './workflow.css';
 import StageCreator from '../components/StageCreator/StageCreator';
+import RightSidedToolbox from '../components/ToolboxBar/RightSidedToolbox/RightSidedToolbox';
 
 export default () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -104,10 +105,10 @@ export default () => {
     <div className="workflow-container">
       {stageCreator}
       <ParamContext.Provider value={paramValue}>
-        <Toolbox selectedMode={selectedMode} setMode={setMode} />
-        <FilterContext.Provider value={filterValue}>
-          <PaintContext.Provider value={paintValue}>
-            <div className="App-row">
+        {/* <Toolbox selectedMode={selectedMode} setMode={setMode} /> */}
+        <div className="App-row">
+          <FilterContext.Provider value={filterValue}>
+            <PaintContext.Provider value={paintValue}>
               <ImageField
                 selectedImage={selectedImage!}
                 selectedMode={selectedMode}
@@ -115,9 +116,10 @@ export default () => {
                 bgColor={bgColor}
               />
               <ParamField />
-            </div>
-          </PaintContext.Provider>
-        </FilterContext.Provider>
+            </PaintContext.Provider>
+          </FilterContext.Provider>
+          <RightSidedToolbox selectedMode={selectedMode} setMode={setMode} />
+        </div>
       </ParamContext.Provider>
       <StatusBar
         selectedImage={selectedImage!}

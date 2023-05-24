@@ -12,12 +12,7 @@ export default function StatusBar({
   setSelectedImage,
   stageScale,
 }: StatusBarProps) {
-  function displayName(): string {
-    if (selectedImage) {
-      return selectedImage.name;
-    }
-    return 'Select an image';
-  }
+  const displayName = selectedImage ? selectedImage.name : 'Select an image';
 
   return (
     <div className="status-bar">
@@ -28,12 +23,12 @@ export default function StatusBar({
           }}
           type="file"
         ></input>
-        {displayName()}
+        {displayName}
       </label>
       Canvas size y:{stageScale.height} : x:{stageScale.width}
       {/* <button>Save as image</button> */}
       <div className="version-container">
-        <a href="https://github.com/sob3r69/Phottilo">ver 0.1.3</a>
+        <a href="https://github.com/sob3r69/Phottilo">ver 0.1.4</a>
         <div className="version-hint">github.com/sob3r69/Phottilo</div>
       </div>
     </div>

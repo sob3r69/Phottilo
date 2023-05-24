@@ -7,7 +7,6 @@ export default () => {
   const context = useContext(PaintContext);
 
   const handleColorChange = (color: ColorResult) => {
-    console.log(color.rgb);
     context.funcs.brush.changeRed(color.rgb.r);
     context.funcs.brush.changeGreen(color.rgb.g);
     context.funcs.brush.changeBlue(color.rgb.b);
