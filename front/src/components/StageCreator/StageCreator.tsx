@@ -58,7 +58,6 @@ const StageCreator = ({ funcs, bgColor }: StageProps) => {
           <div className="stage-creator-values-colors">
             <div className="stage-creator-values-colors-hint">Background color</div>
             <CirclePicker
-              color={bgColor}
               colors={['#FFFFFF', '#000000', '#FF0000']}
               onChange={handleColorChange}
             />

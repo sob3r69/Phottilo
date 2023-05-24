@@ -1,6 +1,6 @@
 import FilterTools from './FilterMode/FilterTools';
 import PaintTools from './PaintMode/PaintTools';
-import './style.css';
+import './params-style.css';
 
 export type Mode = {
   name: string;
