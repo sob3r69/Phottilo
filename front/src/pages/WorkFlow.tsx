@@ -105,7 +105,6 @@ export default () => {
     <div className="workflow-container">
       {stageCreator}
       <ParamContext.Provider value={paramValue}>
-        {/* <Toolbox selectedMode={selectedMode} setMode={setMode} /> */}
         <div className="App-row">
           <FilterContext.Provider value={filterValue}>
             <PaintContext.Provider value={paintValue}>
@@ -115,10 +114,13 @@ export default () => {
                 stageScale={{ stageWidth, stageHeight }}
                 bgColor={bgColor}
               />
-              <ParamField />
+              <div className="params-columns">
+                <Toolbox selectedMode={selectedMode} setMode={setMode} />
+                <ParamField />
+              </div>
             </PaintContext.Provider>
           </FilterContext.Provider>
-          <RightSidedToolbox selectedMode={selectedMode} setMode={setMode} />
+          {/* <RightSidedToolbox selectedMode={selectedMode} setMode={setMode} /> */}
         </div>
       </ParamContext.Provider>
       <StatusBar

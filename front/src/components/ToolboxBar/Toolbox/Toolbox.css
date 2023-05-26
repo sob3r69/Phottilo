@@ -5,9 +5,7 @@
   background-color: var(--elementColor);
   height: 40px;
   border-radius: 8px;
-  margin-top: 8px;
   margin-left: 8px;
-  margin-right: 8px;
 }
 
 .toolbox-separator {
@@ -16,10 +14,4 @@
   margin-left: 8px;
   border-radius: 8px;
   background-color: var(--primaryColor);
-}
-
-.toolbox-undoredo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 import ModeChanger from '../ModeChanger/ModeChanger';
 import { Mode } from '../../Modes/ModeTypes';
 
-import './style.css';
+import './Toolbox.css';
 
 interface ToolBoxProps {
   setMode: React.Dispatch<React.SetStateAction<Mode>>;
