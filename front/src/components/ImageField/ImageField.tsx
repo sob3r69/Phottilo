@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
-import { Layer, Rect, Stage } from 'react-konva';
+import { KonvaNodeComponent, Layer, Rect, Stage } from 'react-konva';
 import FilteredImage from './FilteredImage';
 import { PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
@@ -8,11 +8,14 @@ import useImage from 'use-image';
 import BrushLine from './BrushLine';
 import { Mode } from '../Modes/ModeTypes';
 import { modes } from '../Modes/ModeTypes';
+import Konva from 'konva';
+
 interface ImageFieldProps {
   selectedImage: File;
   selectedMode: Mode;
   stageScale: { stageWidth: number; stageHeight: number };
   bgColor: string;
+  stageRef: React.RefObject<Konva.Stage>;
 }
 
 export function ImageField({
@@ -20,6 +23,7 @@ export function ImageField({
   selectedMode,
   stageScale,
   bgColor,
+  stageRef,
 }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
@@ -98,6 +102,7 @@ export function ImageField({
         onMousemove={selectedMode === modes.paint ? handleMouseMove : undefined}
         onMouseup={selectedMode === modes.paint ? handleMouseUp : undefined}
         style={{ height: '1px' }}
+        ref={stageRef}
       >
         <Layer>
           <Rect

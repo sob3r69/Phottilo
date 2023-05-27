@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FilterContext, PaintContext, ParamContext } from '../Contexts/Contexts';
 import { ImageField } from '../components/ImageField/ImageField';
 import { ParamField } from '../components/ParamField/ParamField';
@@ -7,7 +7,11 @@ import Toolbox from '../components/ToolboxBar/Toolbox/Toolbox';
 import { modes } from '../components/Modes/ModeTypes';
 import './workflow.css';
 import StageCreator from '../components/StageCreator/StageCreator';
-import RightSidedToolbox from '../components/ToolboxBar/RightSidedToolbox/RightSidedToolbox';
+import { BiImageAdd, BiSave } from 'react-icons/bi';
+import AddImageButton from '../components/FunctionalButtons/AddImageButton';
+import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
+import Konva from 'konva';
+import { KonvaNodeComponent } from 'react-konva';
 
 export default () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -101,6 +105,8 @@ export default () => {
     console.log('StageCreator');
   }, []);
 
+  const stageRef = useRef<Konva.Stage>(null);
+
   return (
     <div className="workflow-container">
       {stageCreator}
@@ -113,21 +119,26 @@ export default () => {
                 selectedMode={selectedMode}
                 stageScale={{ stageWidth, stageHeight }}
                 bgColor={bgColor}
+                stageRef={stageRef}
               />
               <div className="params-columns">
                 <Toolbox selectedMode={selectedMode} setMode={setMode} />
                 <ParamField />
+                <div className="btns-container">
+                  <AddImageButton
+                    Icon={BiImageAdd}
+                    text="Add image"
+                    selectedImage={selectedImage!}
+                    setSelectedImage={setSelectedImage}
+                  />
+                  <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />
+                </div>
               </div>
             </PaintContext.Provider>
           </FilterContext.Provider>
-          {/* <RightSidedToolbox selectedMode={selectedMode} setMode={setMode} /> */}
         </div>
       </ParamContext.Provider>
-      <StatusBar
-        selectedImage={selectedImage!}
-        setSelectedImage={setSelectedImage}
-        stageScale={stageScale}
-      />
+      <StatusBar selectedImage={selectedImage!} stageScale={stageScale} />
     </div>
   );
 };

@@ -1,0 +1,16 @@
+.functional-button {
+  align-items: center;
+  background: var(--elementColor);
+  border: none;
+  border-radius: 8px;
+  color: var(--primaryColor);
+  display: flex;
+  font-size: 24px;
+  text-align: center;
+  padding: 8px;
+  width: 48%;
+}
+.functional-button:hover {
+  background-color: var(--primaryActiveColor);
+  outline: 1px solid var(--primaryColor);
+}

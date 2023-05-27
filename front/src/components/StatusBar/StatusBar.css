@@ -3,24 +3,14 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  /* margin-top: auto; */
   padding-right: 8px;
   font-size: 18px;
   background-color: var(--elementColor);
 }
 
-.image-selector {
+.image-name-container {
   padding-left: 8px;
   padding-right: 8px;
-}
-
-.image-selector input[type='file'] {
-  display: none;
-}
-
-.image-selector:hover {
-  cursor: pointer;
-  background-color: antiquewhite;
 }
 
 .status-bar a {
