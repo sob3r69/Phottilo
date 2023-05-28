@@ -115,6 +115,7 @@ export function ImageField({
             <BrushLine
               key={i}
               color={hex.hex}
+              eraserColor={bgColor}
               line={line}
               width={width}
               tension={paintContext.settings.brush.tension}

@@ -11,7 +11,6 @@ import { BiImageAdd, BiSave } from 'react-icons/bi';
 import AddImageButton from '../components/FunctionalButtons/AddImageButton';
 import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
 import Konva from 'konva';
-import { KonvaNodeComponent } from 'react-konva';
 
 export default () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -50,7 +49,7 @@ export default () => {
   const [size, setSize] = useState(1);
   const [tension, setTension] = useState(0.5);
   const [gapLength, setGapLength] = useState(0);
-  const [gap, setGap] = useState(0);
+  const [gap, setGap] = useState(1);
   const [brushRed, setBrushRed] = useState(1);
   const [brushGreen, setBrushGreen] = useState(1);
   const [brushBlue, setBrushBlue] = useState(1);

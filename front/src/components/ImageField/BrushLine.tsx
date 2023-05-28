@@ -8,15 +8,25 @@ interface LineProps {
   tension: number;
   gap: number[];
   tool: string;
+  eraserColor: string;
 }
 
-const BrushLine = ({ line, color, width, gap, tension, tool }: LineProps) => {
+const BrushLine = ({
+  line,
+  color,
+  width,
+  gap,
+  tension,
+  tool,
+  eraserColor,
+}: LineProps) => {
   const thisWidth = useRef(width);
   const thisColor = useRef(color);
   const thisGap = useRef(gap);
   const thisTool = useRef(tool);
 
   if (thisTool.current === 'eraser') {
+    thisColor.current = eraserColor;
     thisGap.current = [0, 0];
   }
 
@@ -28,9 +38,7 @@ const BrushLine = ({ line, color, width, gap, tension, tool }: LineProps) => {
       tension={tension}
       dash={thisGap.current}
       lineCap="round"
-      globalCompositeOperation={
-        thisTool.current === 'brush' ? 'source-over' : 'destination-out'
-      }
+      globalCompositeOperation="source-over"
     />
   );
 };
