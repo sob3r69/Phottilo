@@ -5,11 +5,10 @@ import { Dispatch, SetStateAction } from 'react';
 interface BtnProps {
   Icon: IconType;
   text: string;
-  selectedImage?: File;
   setSelectedImage?: Dispatch<SetStateAction<File | undefined>>;
 }
 
-const AddImageButton = ({ Icon, text, selectedImage, setSelectedImage }: BtnProps) => {
+const AddImageButton = ({ Icon, text, setSelectedImage }: BtnProps) => {
   return (
     <label className="functional-button">
       <input

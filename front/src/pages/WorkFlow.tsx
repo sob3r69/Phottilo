@@ -127,7 +127,6 @@ export default () => {
                   <AddImageButton
                     Icon={BiImageAdd}
                     text="Add image"
-                    selectedImage={selectedImage!}
                     setSelectedImage={setSelectedImage}
                   />
                   <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />

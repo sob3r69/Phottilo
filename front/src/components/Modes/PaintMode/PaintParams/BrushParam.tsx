@@ -20,14 +20,16 @@ export default () => {
           onChange={handleColorChange}
         />
       </div>
-      <Slider
-        min={1}
-        max={100}
-        step={1}
-        value={context.settings.brush.size}
-        onChange={context.funcs.brush.changeSize}
-        text="Size"
-      />
+      <div className="sorting-container">
+        <Slider
+          min={1}
+          max={100}
+          step={1}
+          value={context.settings.brush.size}
+          onChange={context.funcs.brush.changeSize}
+          text="Size"
+        />
+      </div>
       {/* <Slider
         min={0}
         max={50}
@@ -36,47 +38,52 @@ export default () => {
         onChange={context.funcs.brush.changeTension}
         text="Как эту хуйню описать"
       /> */}
-      <Slider
-        min={0}
-        max={100}
-        step={1}
-        value={context.settings.brush.gapLength}
-        onChange={context.funcs.brush.changeGapLength}
-        text="Gap len"
-      />
-      <Slider
-        min={0}
-        max={50}
-        step={1}
-        value={context.settings.brush.gap}
-        onChange={context.funcs.brush.changeGap}
-        text="Gap"
-      />
+      <div className="sorting-container">
+        <Slider
+          min={0}
+          max={100}
+          step={1}
+          value={context.settings.brush.gapLength}
+          onChange={context.funcs.brush.changeGapLength}
+          text="Gap len"
+        />
+        <Slider
+          min={0}
+          max={50}
+          step={1}
+          value={context.settings.brush.gap - 1}
+          onChange={context.funcs.brush.changeGap}
+          text="Gap"
+        />
+      </div>
 
-      <Slider
-        min={0}
-        max={255}
-        step={1}
-        value={context.settings.brush.red}
-        onChange={context.funcs.brush.changeRed}
-        borderColor={'#9C3D3D'}
-      />
-      <Slider
-        min={0}
-        max={255}
-        step={1}
-        value={context.settings.brush.green}
-        onChange={context.funcs.brush.changeGreen}
-        borderColor={'#3A854F'}
-      />
-      <Slider
-        min={0}
-        max={255}
-        step={1}
-        value={context.settings.brush.blue}
-        onChange={context.funcs.brush.changeBlue}
-        borderColor={'#3C71A3'}
-      />
+      <div className="sorting-container">
+        <div className="sorting-text">RGB</div>
+        <Slider
+          min={0}
+          max={255}
+          step={1}
+          value={context.settings.brush.red}
+          onChange={context.funcs.brush.changeRed}
+          borderColor={'#9C3D3D'}
+        />
+        <Slider
+          min={0}
+          max={255}
+          step={1}
+          value={context.settings.brush.green}
+          onChange={context.funcs.brush.changeGreen}
+          borderColor={'#3A854F'}
+        />
+        <Slider
+          min={0}
+          max={255}
+          step={1}
+          value={context.settings.brush.blue}
+          onChange={context.funcs.brush.changeBlue}
+          borderColor={'#3C71A3'}
+        />
+      </div>
       {/* <Slider
         min={0}
         max={1}

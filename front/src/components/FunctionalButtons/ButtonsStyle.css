@@ -12,5 +12,6 @@
 }
 .functional-button:hover {
   background-color: var(--primaryActiveColor);
+  cursor: pointer;
   outline: 1px solid var(--primaryColor);
 }

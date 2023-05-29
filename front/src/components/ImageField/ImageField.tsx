@@ -57,10 +57,6 @@ export function ImageField({
     }
   }, [selectedImage]);
 
-  useEffect(() => {
-    console.log('render');
-  });
-
   //drawing
   const handleMouseDown = (e: any) => {
     isDrawing.current = true;
