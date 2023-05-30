@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
-import { KonvaNodeComponent, Layer, Rect, Stage } from 'react-konva';
+import { Group, Image, KonvaNodeComponent, Layer, Rect, Stage } from 'react-konva';
 import FilteredImage from './FilteredImage';
 import { FilterContext, PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
@@ -27,6 +27,10 @@ export function ImageField({
 }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
+
+  const groupRef = useRef<Konva.Layer>(null);
+  const [linesURL, setLineURL] = useState('');
+  const [linesImage] = useImage(linesURL);
 
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
@@ -88,6 +92,8 @@ export function ImageField({
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+    setLines([]);
+    setLineURL(groupRef.current?.toDataURL()!);
   };
 
   return (
@@ -107,7 +113,12 @@ export function ImageField({
             width={stageScale.stageWidth}
             height={stageScale.stageHeight}
           />
+        </Layer>
+        <Layer>
           <FilteredImage image={image} />
+        </Layer>
+        <Layer ref={groupRef}>
+          <Image image={linesImage}></Image>
           {lines.map((line: any, i: number) => (
             <BrushLine
               key={i}

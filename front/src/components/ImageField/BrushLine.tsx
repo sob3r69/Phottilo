@@ -24,15 +24,16 @@ const BrushLine = ({
   const thisColor = useRef(color);
   const thisGap = useRef(gap);
   const thisTool = useRef(tool);
+  const thisPoints = useRef(line);
 
   if (thisTool.current === 'eraser') {
     thisColor.current = eraserColor;
-    thisGap.current = [0, 0];
+    thisGap.current = [0, 1];
   }
 
   return (
     <Line
-      points={line.points}
+      points={thisPoints.current.points}
       stroke={thisColor.current}
       strokeWidth={thisWidth.current}
       tension={tension}
