@@ -41,7 +41,7 @@
   appearance: none;
   border: 2px solid var(--primaryColor);
   border-radius: 16px;
-  background-color: var(--elementColor);
+  background-color: var(--backgroundColor);
   height: 16px;
   width: 16px;
   cursor: pointer;
@@ -52,7 +52,7 @@
   appearance: none;
   border: 2px solid var(--primaryColor);
   border-radius: 16px;
-  background-color: var(--elementColor);
+  background-color: var(--backgroundColor);
   height: 16px;
   width: 16px;
   cursor: pointer;

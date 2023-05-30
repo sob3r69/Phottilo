@@ -1,6 +1,6 @@
 import Konva from 'konva';
 import { Image as ImageShape } from 'konva/lib/shapes/Image';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Image } from 'react-konva';
 import { FilterContext } from '../../Contexts/Contexts';
 
@@ -24,19 +24,8 @@ export default function FilteredImage({ image }: ImageProps) {
       ref={imageRef}
       image={image}
       draggable={false}
-      filters={[
-        Konva.Filters.Blur,
-        // Konva.Filters.HSL,
-        // Konva.Filters.HSV,
-        // Konva.Filters.Noise,
-        // Konva.Filters.Pixelate,
-        Konva.Filters.RGBA,
-      ]}
+      filters={[Konva.Filters.Blur, Konva.Filters.RGBA]}
       blurRadius={context.filters.blur}
-      luminance={0}
-      value={0}
-      noise={0}
-      pixelSize={0}
       red={context.filters.red}
       green={context.filters.green}
       blue={context.filters.blue}

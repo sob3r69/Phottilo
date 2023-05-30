@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
 import { KonvaNodeComponent, Layer, Rect, Stage } from 'react-konva';
 import FilteredImage from './FilteredImage';
-import { PaintContext, ParamContext } from '../../Contexts/Contexts';
+import { FilterContext, PaintContext, ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import BrushLine from './BrushLine';
@@ -33,6 +33,7 @@ export function ImageField({
 
   const paintContext = useContext(PaintContext);
   const paramContext = useContext(ParamContext);
+  const filterContext = useContext(FilterContext);
 
   const width =
     paramContext.currParam.paramName === 'brush'
