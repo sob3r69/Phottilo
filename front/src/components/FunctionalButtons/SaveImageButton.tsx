@@ -1,6 +1,7 @@
 import Konva from 'konva';
 import './ButtonsStyle.css';
 import { IconType } from 'react-icons';
+import { createURIFromStage, downloadURI } from '../../funcs/StageFuncs';
 
 interface BtnProps {
   Icon: IconType;
@@ -9,19 +10,8 @@ interface BtnProps {
 }
 
 const SaveImageButton = ({ Icon, text, stageRef }: BtnProps) => {
-  function downloadURI(uri: string, name: string) {
-    var link = document.createElement('a');
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
   const handleExport = () => {
-    const uri = stageRef.current!.toDataURL();
-    console.log(uri);
-    downloadURI(uri, 'stage.png');
+    downloadURI(createURIFromStage(stageRef), 'stage.png');
   };
 
   return (

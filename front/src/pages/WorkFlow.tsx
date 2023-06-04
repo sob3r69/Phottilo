@@ -57,6 +57,7 @@ export default () => {
 
   const [eraserSize, setEraserSize] = useState(1);
 
+  const [cropState, setCropState] = useState(false);
   const paintValue = {
     settings: {
       eraser: {
@@ -87,6 +88,12 @@ export default () => {
         changeBlue: (n = 1) => setBrushBlue(n),
         changeAlpha: (n = 1) => setBrushAlpha(n),
       },
+    },
+    crop: {
+      cropState: cropState,
+    },
+    cropFuncs: {
+      setCropState: (n = !cropState) => setCropState(n),
     },
   };
 

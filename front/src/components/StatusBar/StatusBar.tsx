@@ -13,7 +13,7 @@ export default function StatusBar({ selectedImage, stageScale }: StatusBarProps)
       <div className="image-name-container">{displayName}</div>
       Canvas size y:{stageScale.height} | x:{stageScale.width}
       <div className="version-container">
-        <a href="https://github.com/sob3r69/Phottilo">ver 0.2.0</a>
+        <a href="https://github.com/sob3r69/Phottilo">ver 0.2.1</a>
         <div className="version-hint">github.com/sob3r69/Phottilo</div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function ModeChanger({ selectedMode, setMode }: ModeChangerProps)
         <div className="modes-container">
           <button onClick={() => setMode(modes.paint)}>Paint Mode</button>
           <button onClick={() => setMode(modes.filter)}>Filter Mode</button>
-          <button>Resize Mode</button>
+          <button onClick={() => setMode(modes.resize)}>Resize Mode</button>
         </div>
       </div>
     </div>

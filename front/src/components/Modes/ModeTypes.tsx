@@ -1,5 +1,6 @@
 import FilterTools from './FilterMode/FilterTools';
 import PaintTools from './PaintMode/PaintTools';
+import ResizeTools from './ResizeMode/ResizeTools';
 import './params-style.css';
 
 export type Mode = {
@@ -18,6 +19,6 @@ export const modes = {
   },
   resize: {
     name: 'Resize Mode',
-    tools: 'resize',
+    tools: <ResizeTools />,
   },
 };

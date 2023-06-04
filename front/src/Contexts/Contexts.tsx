@@ -57,4 +57,10 @@ export const PaintContext = createContext({
       changeAlpha: (n: number) => {},
     },
   },
+  crop: {
+    cropState: false,
+  },
+  cropFuncs: {
+    setCropState: () => {},
+  },
 });
