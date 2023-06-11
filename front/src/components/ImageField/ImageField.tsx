@@ -34,7 +34,7 @@ export function ImageField({
 
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
-
+  
   const paintContext = useContext(PaintContext);
   const paramContext = useContext(ParamContext);
   const filterContext = useContext(FilterContext);
