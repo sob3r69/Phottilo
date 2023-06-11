@@ -1,5 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
-import { FilterContext, PaintContext, ParamContext } from '../Contexts/Contexts';
+import {
+  FilterContext,
+  PaintContext,
+  ParamContext,
+} from '../Contexts/Contexts';
 import { ImageField } from '../components/ImageField/ImageField';
 import { ParamField } from '../components/ParamField/ParamField';
 import StatusBar from '../components/StatusBar/StatusBar';
@@ -21,20 +25,38 @@ export default () => {
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
   const [alpha, setAlpha] = useState(0);
+  const [brightness, setBrightness] = useState(0);
+  const [contrast, setContrast] = useState(0);
+  const [noise, setNoise] = useState(0);
 
   const changeBlur = (n = 1) => setBlur(n);
   const changeRed = (n = 1) => setRed(n);
   const changeGreen = (n = 1) => setGreen(n);
   const changeBlue = (n = 1) => setBlue(n);
   const changeAlpha = (n = 1) => setAlpha(n);
+  const changeBrightness = (n = 1) => setBrightness(n);
+  const changeContrast = (n = 1) => setContrast(n);
+  const changeNoise = (n = 1) => setNoise(n);
 
-  const filters = { blur, red, green, blue, alpha };
+  const filters = {
+    blur,
+    red,
+    green,
+    blue,
+    alpha,
+    brightness,
+    contrast,
+    noise,
+  };
   const funcs = {
     changeBlur,
     changeRed,
     changeGreen,
     changeBlue,
     changeAlpha,
+    changeBrightness,
+    changeContrast,
+    changeNoise,
   };
   const filterValue = { filters, funcs };
 
@@ -136,7 +158,11 @@ export default () => {
                     text="Add image"
                     setSelectedImage={setSelectedImage}
                   />
-                  <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />
+                  <SaveImageButton
+                    Icon={BiSave}
+                    text="Save image"
+                    stageRef={stageRef}
+                  />
                 </div>
               </div>
             </PaintContext.Provider>

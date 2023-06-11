@@ -1,8 +1,8 @@
-import { MdBlurCircular } from 'react-icons/md';
 import { TbColorFilter } from 'react-icons/tb';
+import { BiSlider } from 'react-icons/bi';
 
 import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
-import BlurParams from './FilterParams/BlurParams';
+import PostProcessing from './FilterParams/PostProcessParams';
 import { useContext } from 'react';
 import { ParamContext } from '../../../Contexts/Contexts';
 import ColorParams from './FilterParams/ColorParams';
@@ -20,16 +20,22 @@ export default function () {
   return (
     <div className="tools-container">
       <ToolButton
-        Icon={MdBlurCircular}
-        hintText="Blur"
-        value={{ name: 'blur', e: <BlurParams /> }}
+        Icon={BiSlider}
+        hintText="Post Processing"
+        value={{
+          name: 'post Processing',
+          e: <PostProcessing />,
+        }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
       <ToolButton
         Icon={TbColorFilter}
         hintText="Colors"
-        value={{ name: 'colors', e: <ColorParams /> }}
+        value={{
+          name: 'colors',
+          e: <ColorParams />,
+        }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />

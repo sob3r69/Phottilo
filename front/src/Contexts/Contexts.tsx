@@ -7,6 +7,9 @@ export const FilterContext = createContext({
     green: 0,
     blue: 0,
     alpha: 0,
+    brightness: 0,
+    contrast: 0,
+    noise: 0,
   },
   funcs: {
     changeBlur: () => {},
@@ -14,6 +17,9 @@ export const FilterContext = createContext({
     changeGreen: () => {},
     changeBlue: () => {},
     changeAlpha: () => {},
+    changeBrightness: () => {},
+    changeContrast: () => {},
+    changeNoise: () => {},
   },
 });
 

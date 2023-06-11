@@ -24,12 +24,21 @@ export default function FilteredImage({ image }: ImageProps) {
       ref={imageRef}
       image={image}
       draggable={false}
-      filters={[Konva.Filters.Blur, Konva.Filters.RGBA]}
+      filters={[
+        Konva.Filters.Blur,
+        Konva.Filters.RGBA,
+        Konva.Filters.Brighten,
+        Konva.Filters.Contrast,
+        Konva.Filters.Noise,
+      ]}
       blurRadius={context.filters.blur}
       red={context.filters.red}
       green={context.filters.green}
       blue={context.filters.blue}
       alpha={context.filters.alpha}
+      brightness={context.filters.brightness}
+      contrast={context.filters.contrast}
+      noise={context.filters.noise}
     />
   );
 }
