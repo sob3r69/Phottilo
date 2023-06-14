@@ -33,7 +33,6 @@ export default function () {
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
-      {/* <ToolButton Icon={BsPentagon} hintText="Figure" onClick={handler} /> */}
     </div>
   );
 }

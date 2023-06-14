@@ -38,10 +38,12 @@ export function ImageField({
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
 
-  if (image) {
-    stageFuncs.setSWidth(image.width);
-    stageFuncs.setSHeight(image.height);
-  }
+  useEffect(() => {
+    if (image) {
+      stageFuncs.setSWidth(image.width);
+      stageFuncs.setSHeight(image.height);
+    }
+  }, [image]);
 
   const groupRef = useRef<Konva.Layer>(null);
   const [linesURL, setLineURL] = useState('');
@@ -111,8 +113,8 @@ export function ImageField({
     setLineURL(groupRef.current?.toDataURL()!);
   };
 
-  const [cropWidth, setCropWidth] = useState(1920);
-  const [cropHeight, setCropHeight] = useState(1080);
+  const [cropWidth, setCropWidth] = useState(6000);
+  const [cropHeight, setCropHeight] = useState(6000);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
