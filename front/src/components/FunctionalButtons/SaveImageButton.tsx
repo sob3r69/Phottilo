@@ -15,7 +15,7 @@ const SaveImageButton = ({ Icon, text, stageRef }: BtnProps) => {
   };
 
   return (
-    <button className="functional-button" onClick={handleExport}>
+    <button type="button" className="functional-button" onClick={handleExport}>
       <Icon />
       {text}
     </button>

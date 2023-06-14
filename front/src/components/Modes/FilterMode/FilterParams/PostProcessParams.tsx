@@ -38,7 +38,7 @@ const PostProcessing = () => {
         step={0.01}
         value={context.filters.noise}
         onChange={context.funcs.changeNoise}
-        text="Contrast"
+        text="Noise"
       />
     </div>
   );

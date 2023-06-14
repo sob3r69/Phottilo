@@ -15,6 +15,7 @@ import { BiImageAdd, BiSave } from 'react-icons/bi';
 import AddImageButton from '../components/FunctionalButtons/AddImageButton';
 import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
 import Konva from 'konva';
+import React from 'react';
 
 export default () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -148,6 +149,7 @@ export default () => {
                 stageScale={{ stageWidth, stageHeight }}
                 bgColor={bgColor}
                 stageRef={stageRef}
+                stageFuncs={stageFuncs}
               />
               <div className="params-columns">
                 <Toolbox selectedMode={selectedMode} setMode={setMode} />

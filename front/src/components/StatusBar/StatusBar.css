@@ -26,11 +26,12 @@
   visibility: hidden;
   position: absolute;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.274);
+  background-color: white;
+  /* background-color: rgba(255, 255, 255, 0.274); */
   border-radius: 8px;
   font-size: 12px;
   padding: 2px 8px 2px 8px;
-  margin-right: 80px;
+  margin-right: 100px;
   margin-bottom: 50px;
   opacity: 0;
   transition: opacity 1s;

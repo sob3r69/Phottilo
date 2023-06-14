@@ -2,7 +2,11 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
 import { Group, Image, Layer, Rect, Stage, Transformer } from 'react-konva';
 import FilteredImage from './FilteredImage';
-import { FilterContext, PaintContext, ParamContext } from '../../Contexts/Contexts';
+import {
+  FilterContext,
+  PaintContext,
+  ParamContext,
+} from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import BrushLine from './BrushLine';
@@ -16,6 +20,11 @@ interface ImageFieldProps {
   stageScale: { stageWidth: number; stageHeight: number };
   bgColor: string;
   stageRef: React.RefObject<Konva.Stage>;
+  stageFuncs: {
+    setSWidth: React.Dispatch<React.SetStateAction<number>>;
+    setSHeight: React.Dispatch<React.SetStateAction<number>>;
+    setBgColor: React.Dispatch<React.SetStateAction<string>>;
+  };
 }
 
 export function ImageField({
@@ -24,9 +33,15 @@ export function ImageField({
   stageScale,
   bgColor,
   stageRef,
+  stageFuncs,
 }: ImageFieldProps) {
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
+
+  if (image) {
+    stageFuncs.setSWidth(image.width);
+    stageFuncs.setSHeight(image.height);
+  }
 
   const groupRef = useRef<Konva.Layer>(null);
   const [linesURL, setLineURL] = useState('');
@@ -34,7 +49,7 @@ export function ImageField({
 
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
-  
+
   const paintContext = useContext(PaintContext);
   const paramContext = useContext(ParamContext);
   const filterContext = useContext(FilterContext);
@@ -51,7 +66,7 @@ export function ImageField({
       paintContext.settings.brush.green +
       ',' +
       paintContext.settings.brush.blue +
-      ')',
+      ')'
   );
 
   var imageWrapper = useRef<HTMLDivElement>(null);
@@ -160,7 +175,7 @@ export function ImageField({
               x + cropWidth,
               y + cropHeight,
               x + cropWidth,
-              y + cropHeight,
+              y + cropHeight
             );
             ctx.lineTo(x, y + cropHeight);
             ctx.quadraticCurveTo(x, y + cropHeight, x, y + cropHeight);

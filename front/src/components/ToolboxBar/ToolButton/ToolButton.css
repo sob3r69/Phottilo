@@ -12,7 +12,7 @@
   visibility: hidden;
   position: absolute;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.781);
+  background-color: white;
   border-radius: 8px;
   font-size: 12px;
   padding: 2px 8px 2px 8px;

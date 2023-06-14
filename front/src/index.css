@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
 :root {
-  --backgroundColor: #292929;
+  /* --backgroundColor: #292929;
   --elementColor: #1c1c1c;
   --primaryColor: #9a8960;
-  --primaryActiveColor: #343027;
+  --primaryActiveColor: #343027; */
+  --backgroundColor: #dfdfdf;
+  --elementColor: #d1d1d1;
+  --primaryColor: #000000;
+  --primaryActiveColor: #b9b9b9;
 }
 
 * {
   box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
 }
 
 #root {
