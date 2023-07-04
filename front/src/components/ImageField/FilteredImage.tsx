@@ -2,7 +2,7 @@ import Konva from 'konva';
 import { Image as ImageShape } from 'konva/lib/shapes/Image';
 import React, { useContext, useEffect, useState } from 'react';
 import { Image } from 'react-konva';
-import { FilterContext } from '../../Contexts/Contexts';
+import { useAppSelector } from '../../hooks/redux';
 
 interface ImageProps {
   image: HTMLImageElement | undefined;
@@ -11,7 +11,7 @@ interface ImageProps {
 export default function FilteredImage({ image }: ImageProps) {
   const imageRef = React.useRef<ImageShape>(null);
 
-  const context = useContext(FilterContext);
+  const filters = useAppSelector((state) => state.filterReducer);
 
   useEffect(() => {
     if (image) {
@@ -31,14 +31,14 @@ export default function FilteredImage({ image }: ImageProps) {
         Konva.Filters.Contrast,
         Konva.Filters.Noise,
       ]}
-      blurRadius={context.filters.blur}
-      red={context.filters.red}
-      green={context.filters.green}
-      blue={context.filters.blue}
-      alpha={context.filters.alpha}
-      brightness={context.filters.brightness}
-      contrast={context.filters.contrast}
-      noise={context.filters.noise}
+      blurRadius={filters.blur}
+      red={filters.red}
+      green={filters.green}
+      blue={filters.blue}
+      alpha={filters.alpha}
+      brightness={filters.brightness}
+      contrast={filters.contrast}
+      noise={filters.noise}
     />
   );
 }

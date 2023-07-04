@@ -1,15 +1,23 @@
-import { useContext } from 'react';
-import { PaintContext } from '../../../../Contexts/Contexts';
 import Slider from '../../../ParamField/Slider/Slider';
 import { CirclePicker, ColorResult } from 'react-color';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import {
+  changeBBlueByAmount,
+  changeBGapByAmount,
+  changeBGapLenByAmount,
+  changeBGreenByAmount,
+  changeBRedByAmount,
+  changeBSizeByAmount,
+} from '../../../../store/reducers/PaintSlice';
 
 export default () => {
-  const context = useContext(PaintContext);
+  const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.paintReducer);
 
   const handleColorChange = (color: ColorResult) => {
-    context.funcs.brush.changeRed(color.rgb.r);
-    context.funcs.brush.changeGreen(color.rgb.g);
-    context.funcs.brush.changeBlue(color.rgb.b);
+    dispatch(changeBRedByAmount(color.rgb.r));
+    dispatch(changeBGreenByAmount(color.rgb.g));
+    dispatch(changeBBlueByAmount(color.rgb.b));
   };
 
   return (
@@ -25,8 +33,8 @@ export default () => {
           min={1}
           max={100}
           step={1}
-          value={context.settings.brush.size}
-          onChange={context.funcs.brush.changeSize}
+          value={settings.brush.size}
+          onChange={(newVal) => dispatch(changeBSizeByAmount(newVal))}
           text="Size"
         />
       </div>
@@ -43,16 +51,16 @@ export default () => {
           min={0}
           max={100}
           step={1}
-          value={context.settings.brush.gapLength}
-          onChange={context.funcs.brush.changeGapLength}
+          value={settings.brush.gapLength}
+          onChange={(newVal) => dispatch(changeBGapLenByAmount(newVal))}
           text="Gap len"
         />
         <Slider
           min={0}
           max={50}
           step={1}
-          value={context.settings.brush.gap - 1}
-          onChange={context.funcs.brush.changeGap}
+          value={settings.brush.gap - 1}
+          onChange={(newVal) => dispatch(changeBGapByAmount(newVal))}
           text="Gap"
         />
       </div>
@@ -63,24 +71,24 @@ export default () => {
           min={0}
           max={255}
           step={1}
-          value={context.settings.brush.red}
-          onChange={context.funcs.brush.changeRed}
+          value={settings.brush.red}
+          onChange={(newVal) => dispatch(changeBRedByAmount(newVal))}
           borderColor={'#9C3D3D'}
         />
         <Slider
           min={0}
           max={255}
           step={1}
-          value={context.settings.brush.green}
-          onChange={context.funcs.brush.changeGreen}
+          value={settings.brush.green}
+          onChange={(newVal) => dispatch(changeBGreenByAmount(newVal))}
           borderColor={'#3A854F'}
         />
         <Slider
           min={0}
           max={255}
           step={1}
-          value={context.settings.brush.blue}
-          onChange={context.funcs.brush.changeBlue}
+          value={settings.brush.blue}
+          onChange={(newVal) => dispatch(changeBBlueByAmount(newVal))}
           borderColor={'#3C71A3'}
         />
       </div>

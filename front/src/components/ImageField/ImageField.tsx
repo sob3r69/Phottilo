@@ -2,17 +2,15 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './ImageField.css';
 import { Group, Image, Layer, Rect, Stage, Transformer } from 'react-konva';
 import FilteredImage from './FilteredImage';
-import {
-  FilterContext,
-  PaintContext,
-  ParamContext,
-} from '../../Contexts/Contexts';
+import { ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import BrushLine from './BrushLine';
 import { Mode } from '../Modes/ModeTypes';
 import { modes } from '../Modes/ModeTypes';
 import Konva from 'konva';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { changeCropState } from '../../store/reducers/CropSlice';
 
 interface ImageFieldProps {
   selectedImage: File;
@@ -38,6 +36,11 @@ export function ImageField({
   const [imageURL, setImageURLimageURL] = useState(String);
   const [image] = useImage(imageURL);
 
+  const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.paintReducer);
+  const filters = useAppSelector((state) => state.filterReducer);
+  const cropSettings = useAppSelector((state) => state.cropReducer);
+
   useEffect(() => {
     if (image) {
       stageFuncs.setSWidth(image.width);
@@ -52,23 +55,13 @@ export function ImageField({
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
 
-  const paintContext = useContext(PaintContext);
   const paramContext = useContext(ParamContext);
-  const filterContext = useContext(FilterContext);
 
   const strokeWidth =
-    paramContext.currParam.paramName === 'brush'
-      ? paintContext.settings.brush.size
-      : paintContext.settings.eraser.size;
+    paramContext.currParam.paramName === 'brush' ? settings.brush.size : settings.eraser.size;
 
   const hex = rgb2hex(
-    'rgb(' +
-      paintContext.settings.brush.red +
-      ',' +
-      paintContext.settings.brush.green +
-      ',' +
-      paintContext.settings.brush.blue +
-      ')'
+    'rgb(' + settings.brush.red + ',' + settings.brush.green + ',' + settings.brush.blue + ')'
   );
 
   var imageWrapper = useRef<HTMLDivElement>(null);
@@ -120,20 +113,21 @@ export function ImageField({
 
   const transformerRef = useRef<Konva.Transformer>(null);
   const borderRef = useRef<Konva.Rect>(null);
-  transformerRef.current?.visible(paintContext.crop.cropState);
+  transformerRef.current?.visible(cropSettings.cropState);
 
   useEffect(() => {
-    if (paintContext.crop) {
+    if (cropSettings.cropState) {
       transformerRef.current?.nodes([borderRef.current!]);
       transformerRef.current!.getLayer()!.batchDraw();
     }
-  }, [paintContext.crop]);
+  }, [cropSettings.cropState]);
 
   const setCrop = () => {
     setCropHeight(borderRef.current!.height());
     setCropWidth(borderRef.current!.width());
     setX(borderRef.current!.x());
     setY(borderRef.current!.y());
+    dispatch(changeCropState());
   };
 
   return (
@@ -146,7 +140,7 @@ export function ImageField({
           color: '#9a8960',
           cursor: 'pointer',
           fontSize: '16px',
-          visibility: paintContext.crop.cropState ? 'visible' : 'hidden',
+          visibility: cropSettings.cropState ? 'visible' : 'hidden',
           position: 'absolute',
           marginLeft: '20px',
           marginTop: '20px',
@@ -173,12 +167,7 @@ export function ImageField({
             ctx.lineTo(x + cropWidth, y);
             ctx.quadraticCurveTo(x + cropWidth, y, x + cropWidth, y);
             ctx.lineTo(x + cropWidth, y + cropHeight);
-            ctx.quadraticCurveTo(
-              x + cropWidth,
-              y + cropHeight,
-              x + cropWidth,
-              y + cropHeight
-            );
+            ctx.quadraticCurveTo(x + cropWidth, y + cropHeight, x + cropWidth, y + cropHeight);
             ctx.lineTo(x, y + cropHeight);
             ctx.quadraticCurveTo(x, y + cropHeight, x, y + cropHeight);
             ctx.lineTo(x, y);
@@ -189,11 +178,11 @@ export function ImageField({
           <Group>
             <Rect
               filters={[Konva.Filters.Blur, Konva.Filters.RGBA]}
-              blurRadius={filterContext.filters.blur}
-              red={filterContext.filters.red}
-              green={filterContext.filters.green}
-              blue={filterContext.filters.blue}
-              alpha={filterContext.filters.alpha}
+              blurRadius={filters.blur}
+              red={filters.red}
+              green={filters.green}
+              blue={filters.blue}
+              alpha={filters.alpha}
               fill={bgColor}
               width={stageScale.stageWidth}
               height={stageScale.stageHeight}
@@ -211,24 +200,21 @@ export function ImageField({
                 eraserColor={bgColor}
                 line={line}
                 width={strokeWidth}
-                tension={paintContext.settings.brush.tension}
-                gap={[
-                  paintContext.settings.brush.gapLength,
-                  paintContext.settings.brush.gap,
-                ]}
+                tension={settings.brush.tension}
+                gap={[settings.brush.gapLength, settings.brush.gap]}
                 tool={paramContext.currParam.paramName}
               />
             ))}
           </Group>
           <Rect
             fill="black"
-            visible={paintContext.crop.cropState}
+            visible={cropSettings.cropState}
             width={stageScale.stageWidth}
             height={stageScale.stageHeight}
             opacity={0.7}
           />
           <Rect
-            draggable={paintContext.crop.cropState}
+            draggable={cropSettings.cropState}
             ref={borderRef}
             x={2}
             y={2}

@@ -6,7 +6,6 @@ interface SliderProps {
   max: number;
   step: number;
   value: number;
-  // React.Dispatch<React.SetStateAction<number>>
   onChange: (e: number) => void;
   borderColor?: string;
   text?: string;
@@ -25,11 +24,11 @@ export default function Slider({
     ? { border: '2px solid ' + borderColor }
     : { border: '2px solid var(--primaryColor)' };
 
-  const sliederText = text ? <div className="slider-text">{text}</div> : null;
+  const sliderText = text ? <div className="slider-text">{text}</div> : null;
 
   return (
     <div className="slider-field">
-      {sliederText}
+      {sliderText}
       <label className="slider-label">
         <div className="slider-value" style={border}>
           {value}

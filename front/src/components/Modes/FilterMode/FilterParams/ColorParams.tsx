@@ -1,11 +1,15 @@
-import { useContext } from 'react';
-import { FilterContext } from '../../../../Contexts/Contexts';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import {
+  changeAlphaByAmount,
+  changeBlueByAmount,
+  changeGreenByAmount,
+  changeRedByAmount,
+} from '../../../../store/reducers/FilterSlice';
 import Slider from '../../../ParamField/Slider/Slider';
 
 export default () => {
-  const context = useContext(
-    FilterContext
-  );
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.filterReducer);
 
   return (
     <div className="param-container">
@@ -13,40 +17,32 @@ export default () => {
         min={0}
         max={255}
         step={1}
-        value={context.filters.red}
-        onChange={
-          context.funcs.changeRed
-        }
+        value={filters.red}
+        onChange={(newVal) => dispatch(changeRedByAmount(newVal))}
         borderColor={'#9C3D3D'}
       />
       <Slider
         min={0}
         max={255}
         step={1}
-        value={context.filters.green}
-        onChange={
-          context.funcs.changeGreen
-        }
+        value={filters.green}
+        onChange={(newVal) => dispatch(changeGreenByAmount(newVal))}
         borderColor={'#3A854F'}
       />
       <Slider
         min={0}
         max={255}
         step={1}
-        value={context.filters.blue}
-        onChange={
-          context.funcs.changeBlue
-        }
+        value={filters.blue}
+        onChange={(newVal) => dispatch(changeBlueByAmount(newVal))}
         borderColor={'#3C71A3'}
       />
       <Slider
         min={0}
         max={1}
         step={0.1}
-        value={context.filters.alpha}
-        onChange={
-          context.funcs.changeAlpha
-        }
+        value={filters.alpha}
+        onChange={(newVal) => dispatch(changeAlphaByAmount(newVal))}
         borderColor={'#828282'}
       />
     </div>

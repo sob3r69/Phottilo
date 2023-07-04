@@ -1,9 +1,11 @@
 import { useContext } from 'react';
-import { PaintContext } from '../../../../Contexts/Contexts';
 import Slider from '../../../ParamField/Slider/Slider';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import { changeESizeByAmount } from '../../../../store/reducers/PaintSlice';
 
 export default () => {
-  const context = useContext(PaintContext);
+  const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.paintReducer);
 
   return (
     <div className="param-container">
@@ -11,8 +13,8 @@ export default () => {
         min={1}
         max={100}
         step={1}
-        value={context.settings.eraser.size}
-        onChange={context.funcs.eraser.changeSize}
+        value={settings.eraser.size}
+        onChange={(newVal) => dispatch(changeESizeByAmount(newVal))}
         text="Size"
       />
     </div>

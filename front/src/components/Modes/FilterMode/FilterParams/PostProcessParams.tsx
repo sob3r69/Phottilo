@@ -1,44 +1,50 @@
-import { useContext } from 'react';
-import { FilterContext } from '../../../../Contexts/Contexts';
 import Slider from '../../../ParamField/Slider/Slider';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import {
+  changeBlurByAmount,
+  changeBrightByAmount,
+  changeContrastByAmount,
+  changeNoiseByAmount,
+} from '../../../../store/reducers/FilterSlice';
 
 const PostProcessing = () => {
-  const context = useContext(FilterContext);
-
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.filterReducer);
+  console.log('Param render');
   return (
     <div className="param-container">
       <Slider
+        text="Blur"
         min={0}
         max={100}
         step={1}
-        value={context.filters.blur}
-        onChange={context.funcs.changeBlur}
+        value={filters.blur}
+        onChange={(newVal) => dispatch(changeBlurByAmount(newVal))}
         borderColor={''}
-        text="Blur"
       />
       <Slider
+        text="Brightness"
         min={-1}
         max={1}
         step={0.01}
-        value={context.filters.brightness}
-        onChange={context.funcs.changeBrightness}
-        text="Brighness"
+        value={filters.brightness}
+        onChange={(newVal) => dispatch(changeBrightByAmount(newVal))}
       />
       <Slider
+        text="Contrast"
         min={0}
         max={100}
         step={1}
-        value={context.filters.contrast}
-        onChange={context.funcs.changeContrast}
-        text="Contrast"
+        value={filters.contrast}
+        onChange={(newVal) => dispatch(changeContrastByAmount(newVal))}
       />
       <Slider
+        text="Noise"
         min={0}
         max={0.4}
         step={0.01}
-        value={context.filters.noise}
-        onChange={context.funcs.changeNoise}
-        text="Noise"
+        value={filters.noise}
+        onChange={(newVal) => dispatch(changeNoiseByAmount(newVal))}
       />
     </div>
   );
