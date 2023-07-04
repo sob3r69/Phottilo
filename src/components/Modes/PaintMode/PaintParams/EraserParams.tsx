@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import Slider from '../../../ParamField/Slider/Slider';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import { changeESizeByAmount } from '../../../../store/reducers/PaintSlice';
 
-export default () => {
+const EraserParams = () => {
   const dispatch = useAppDispatch();
   const settings = useAppSelector((state) => state.paintReducer);
 
@@ -20,3 +19,5 @@ export default () => {
     </div>
   );
 };
+
+export default EraserParams;
