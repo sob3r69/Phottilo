@@ -1,5 +1,5 @@
 import { Mode, modes } from '../../Modes/ModeTypes';
-import './mode-changer-normal.css';
+import './ModeChanger.css';
 
 interface ModeChangerProps {
   setMode: React.Dispatch<React.SetStateAction<Mode>>;

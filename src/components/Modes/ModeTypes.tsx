@@ -1,7 +1,7 @@
 import FilterTools from './FilterMode/FilterTools';
 import PaintTools from './PaintMode/PaintTools';
 import ResizeTools from './ResizeMode/ResizeTools';
-import './params-style.css';
+import './Params.css';
 
 export type Mode = {
   name: string;

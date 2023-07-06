@@ -1,6 +1,6 @@
 import { BsBrush, BsEraser, BsPentagon } from 'react-icons/bs';
 
-import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import { ParamContext } from '../../../Contexts/Contexts';
 import { useContext } from 'react';
 import BrushParam from './PaintParams/BrushParam';

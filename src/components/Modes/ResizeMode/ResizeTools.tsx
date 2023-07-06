@@ -1,4 +1,4 @@
-import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import { useContext } from 'react';
 import { ParamContext } from '../../../Contexts/Contexts';
 import { BsCrop } from 'react-icons/bs';

@@ -3,16 +3,16 @@ import { ParamContext } from '../Contexts/Contexts';
 import { ImageField } from '../components/ImageField/ImageField';
 import { ParamField } from '../components/ParamField/ParamField';
 import StatusBar from '../components/StatusBar/StatusBar';
-import Toolbox from '../components/ToolboxBar/Toolbox/Toolbox';
+import Toolbox from '../components/ToolboxContainer/Toolbox/Toolbox';
 import { modes } from '../components/Modes/ModeTypes';
-import './workflow.css';
+import './WorkFlow.css';
 import StageCreator from '../components/StageCreator/StageCreator';
 import { BiImageAdd, BiSave } from 'react-icons/bi';
 import AddImageButton from '../components/FunctionalButtons/AddImageButton';
 import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
 import Konva from 'konva';
 
-export default () => {
+const WorkFlow = () => {
   const [selectedImage, setSelectedImage] = useState<File>();
   const [selectedMode, setMode] = useState(modes.paint);
 
@@ -71,3 +71,5 @@ export default () => {
     </div>
   );
 };
+
+export default WorkFlow;

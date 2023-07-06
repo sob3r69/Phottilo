@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import './style.css';
+import './Slider.css';
 
 interface SliderProps {
   min: number;

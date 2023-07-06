@@ -1,7 +1,7 @@
 import Konva from 'konva';
 import './ButtonsStyle.css';
 import { IconType } from 'react-icons';
-import { createURIFromStage, downloadURI } from '../../funcs/StageFuncs';
+import { createURIFromStage, downloadURI } from '../../helpers/StageFuncs';
 
 interface BtnProps {
   Icon: IconType;

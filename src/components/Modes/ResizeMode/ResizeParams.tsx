@@ -1,6 +1,4 @@
 import { useContext } from 'react';
-import Slider from '../../ParamField/Slider/Slider';
-import { PaintContext } from '../../../Contexts/Contexts';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { changeCropState } from '../../../store/reducers/CropSlice';
 

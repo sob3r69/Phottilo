@@ -1,7 +1,7 @@
 import { TbColorFilter } from 'react-icons/tb';
 import { BiSlider } from 'react-icons/bi';
 
-import ToolButton from '../../ToolboxBar/ToolButton/ToolButton';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import PostProcessing from './FilterParams/PostProcessParams';
 import { useContext } from 'react';
 import { ParamContext } from '../../../Contexts/Contexts';
