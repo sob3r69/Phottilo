@@ -41,7 +41,7 @@ const StageCreator = ({ funcs, bgColor }: StageProps) => {
   };
 
   return (
-    <div className="stage-creator" ref={stageRef}>
+    <section className="stage-creator" ref={stageRef}>
       <div className="stage-creator-card">
         Create a stage
         <div className="stage-creator-values">
@@ -57,10 +57,7 @@ const StageCreator = ({ funcs, bgColor }: StageProps) => {
           </div>
           <div className="stage-creator-values-colors">
             <div className="stage-creator-values-colors-hint">Background color</div>
-            <CirclePicker
-              colors={['#FFFFFF', '#000000', '#FF0000']}
-              onChange={handleColorChange}
-            />
+            <CirclePicker colors={['#FFFFFF', '#000000', '#FF0000']} onChange={handleColorChange} />
           </div>
         </div>
         <div className="stage-creator-buttons">
@@ -72,7 +69,7 @@ const StageCreator = ({ funcs, bgColor }: StageProps) => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -131,7 +131,7 @@ export function ImageField({
   };
 
   return (
-    <div className="image-field" ref={imageWrapper}>
+    <section className="image-field" ref={imageWrapper}>
       <button
         style={{
           background: '#3430279a',
@@ -239,6 +239,6 @@ export function ImageField({
           <Transformer ref={transformerRef} />
         </Layer>
       </Stage>
-    </div>
+    </section>
   );
 }

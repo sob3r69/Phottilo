@@ -1,15 +1,3 @@
-.tools-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.param-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-}
-
 .brush-params-default-colors {
   background: var(--backgroundColor);
   border: 1px solid var(--primaryColor);
