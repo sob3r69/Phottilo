@@ -15,7 +15,7 @@ export default function () {
   }
 
   return (
-    <div className="tools-container">
+    <>
       <ToolButton
         Icon={BsCrop}
         hintText="Crop"
@@ -23,6 +23,6 @@ export default function () {
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
-    </div>
+    </>
   );
 }

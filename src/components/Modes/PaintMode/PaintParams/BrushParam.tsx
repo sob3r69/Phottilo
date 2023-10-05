@@ -21,7 +21,7 @@ export default () => {
   };
 
   return (
-    <div className="param-container">
+    <>
       <div className="brush-params-default-colors">
         <CirclePicker
           colors={['#FFFFFF', '#000000', '#FF0000', '#00FF00', '#0000FF', '#9a8960']}
@@ -100,6 +100,6 @@ export default () => {
         onChange={context.funcs.brush.changeAlpha}
         borderColor={'#828282'}
       /> */}
-    </div>
+    </>
   );
 };

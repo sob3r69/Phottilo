@@ -1,4 +1,4 @@
-.workflow-container {
+.workflow {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -23,7 +23,7 @@
   background-color: var(--elementColor);
 }
 
-.params-columns {
+.params {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

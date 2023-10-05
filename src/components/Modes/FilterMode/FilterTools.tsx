@@ -18,7 +18,7 @@ export default function () {
   }
 
   return (
-    <div className="tools-container">
+    <>
       <ToolButton
         Icon={BiSlider}
         hintText="Post Processing"
@@ -39,6 +39,6 @@ export default function () {
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
-    </div>
+    </>
   );
 }

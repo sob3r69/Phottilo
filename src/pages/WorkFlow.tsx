@@ -35,13 +35,12 @@ const WorkFlow = () => {
 
   useEffect(() => {
     setSC(<StageCreator funcs={stageFuncs} bgColor={bgColor} />);
-    console.log('StageCreator');
   }, []);
 
   const stageRef = useRef<Konva.Stage>(null);
 
   return (
-    <div className="workflow-container">
+    <section className="workflow">
       {stageCreator}
       <ParamContext.Provider value={paramValue}>
         <div className="App-row">
@@ -53,7 +52,7 @@ const WorkFlow = () => {
             stageRef={stageRef}
             stageFuncs={stageFuncs}
           />
-          <div className="params-columns">
+          <section className="params">
             <Toolbox selectedMode={selectedMode} setMode={setMode} />
             <ParamField />
             <div className="btns-container">
@@ -64,11 +63,11 @@ const WorkFlow = () => {
               />
               <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />
             </div>
-          </div>
+          </section>
         </div>
       </ParamContext.Provider>
       <StatusBar selectedImage={selectedImage!} stageScale={stageScale} />
-    </div>
+    </section>
   );
 };
 
