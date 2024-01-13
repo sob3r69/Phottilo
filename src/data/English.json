@@ -1,0 +1,32 @@
+{
+  "tools": {
+    "filter": "Filter",
+    "brush": "Brush",
+    "eraser": "Eraser",
+    "postProcessing": "Post Processing",
+    "colors": "Colors",
+    "crop": "Crop"
+  },
+  "modes": {
+    "paintMode": "Paint Mode",
+    "filterMode": "Filter Mode",
+    "resizeMode": "Resize Mode"
+  },
+  "params": {
+    "size": "Size",
+    "gapLength": "Gap Length",
+    "gap": "Gap",
+    "rgb": "RGB",
+    "blur": "Blur",
+    "brightness": "Brightness",
+    "contrast": "Contrast",
+    "noise": "Noise",
+    "enableCrop": "Enable Crop"
+  },
+  "funcs": {
+    "addImage": "Add Image",
+    "saveImage": "Save Image",
+    "selectImage": "Select an image",
+    "canvasSize": "Canvas size"
+  }
+}
