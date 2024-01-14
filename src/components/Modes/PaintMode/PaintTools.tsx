@@ -5,9 +5,11 @@ import { ParamContext } from '../../../Contexts/Contexts';
 import { useContext } from 'react';
 import BrushParam from './PaintParams/BrushParam';
 import EraserParams from './PaintParams/EraserParams';
+import { useAppSelector } from '../../../hooks/redux';
 
 export default function () {
   const context = useContext(ParamContext);
+  const lang = useAppSelector((state) => state.langSlice.langData.tools);
 
   function changeParam(e: JSX.Element) {
     context.setParam(e);
@@ -21,14 +23,14 @@ export default function () {
     <>
       <ToolButton
         Icon={BsBrush}
-        hintText="Brush"
+        hintText={lang.brush}
         value={{ name: 'brush', e: <BrushParam /> }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
       <ToolButton
         Icon={BsEraser}
-        hintText="Eraser"
+        hintText={lang.eraser}
         value={{ name: 'eraser', e: <EraserParams /> }}
         changeParam={changeParam}
         changeParamName={changeParamName}

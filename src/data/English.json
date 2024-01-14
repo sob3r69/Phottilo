@@ -21,12 +21,14 @@
     "brightness": "Brightness",
     "contrast": "Contrast",
     "noise": "Noise",
-    "enableCrop": "Enable Crop"
+    "enableCrop": "Enable Crop",
+    "disableCrop": "Disable Crop"
   },
   "funcs": {
     "addImage": "Add Image",
     "saveImage": "Save Image",
     "selectImage": "Select an image",
-    "canvasSize": "Canvas size"
+    "canvasSize": "Canvas size",
+    "selectTool": "Select a tool"
   }
 }

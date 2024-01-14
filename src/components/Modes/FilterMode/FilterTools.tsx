@@ -6,8 +6,10 @@ import PostProcessing from './FilterParams/PostProcessParams';
 import { useContext } from 'react';
 import { ParamContext } from '../../../Contexts/Contexts';
 import ColorParams from './FilterParams/ColorParams';
+import { useAppSelector } from '../../../hooks/redux';
 
 export default function () {
+  const lang = useAppSelector((state) => state.langSlice.langData.tools);
   const context = useContext(ParamContext);
   function changeParam(e: JSX.Element) {
     context.setParam(e);
@@ -21,7 +23,7 @@ export default function () {
     <>
       <ToolButton
         Icon={BiSlider}
-        hintText="Post Processing"
+        hintText={lang.postProcessing}
         value={{
           name: 'post Processing',
           e: <PostProcessing />,
@@ -31,7 +33,7 @@ export default function () {
       />
       <ToolButton
         Icon={TbColorFilter}
-        hintText="Colors"
+        hintText={lang.colors}
         value={{
           name: 'colors',
           e: <ColorParams />,

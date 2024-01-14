@@ -10,7 +10,7 @@
   "modes": {
     "paintMode": "Режим рисования",
     "filterMode": "Режим фильтрации",
-    "resizeMode": "Режим изменения размера"
+    "resizeMode": "Режим обрезки"
   },
   "params": {
     "size": "Размер",
@@ -21,12 +21,14 @@
     "brightness": "Яркость",
     "contrast": "Контраст",
     "noise": "Шум",
-    "enableCrop": "Включить обрезку"
+    "enableCrop": "Включить обрезку",
+    "disableCrop": "Отключить обрезку"
   },
   "funcs": {
     "addImage": "Добавить изображение",
     "saveImage": "Сохранить изображение",
     "selectImage": "Выберите изображение",
-    "canvasSize": "Размер холста"
+    "canvasSize": "Размер полотна",
+    "selectTool": "Выберите инструмент"
   }
 }

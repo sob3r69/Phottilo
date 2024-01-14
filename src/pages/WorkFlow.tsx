@@ -11,12 +11,14 @@ import { BiImageAdd, BiSave } from 'react-icons/bi';
 import AddImageButton from '../components/FunctionalButtons/AddImageButton';
 import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
 import Konva from 'konva';
+import { useAppSelector } from '../hooks/redux';
 
 const WorkFlow = () => {
+  const lang = useAppSelector((state) => state.langSlice.langData.funcs);
   const [selectedImage, setSelectedImage] = useState<File>();
   const [selectedMode, setMode] = useState(modes.paint);
 
-  const [param, setParam] = useState(<p>Select a tool</p>);
+  const [param, setParam] = useState(<p>{lang.selectTool}</p>);
   const [paramName, setParamName] = useState('');
   const paramValue = {
     currParam: { paramName, param },
@@ -58,10 +60,10 @@ const WorkFlow = () => {
             <div className="btns-container">
               <AddImageButton
                 Icon={BiImageAdd}
-                text="Add image"
+                text={lang.addImage}
                 setSelectedImage={setSelectedImage}
               />
-              <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />
+              <SaveImageButton Icon={BiSave} text={lang.saveImage} stageRef={stageRef} />
             </div>
           </section>
         </div>

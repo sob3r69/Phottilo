@@ -4,6 +4,7 @@ import { changeESizeByAmount } from '../../../../store/reducers/PaintSlice';
 
 const EraserParams = () => {
   const dispatch = useAppDispatch();
+  const lang = useAppSelector((state) => state.langSlice.langData.params);
   const settings = useAppSelector((state) => state.paintReducer);
 
   return (
@@ -14,7 +15,7 @@ const EraserParams = () => {
         step={1}
         value={settings.eraser.size}
         onChange={(newVal) => dispatch(changeESizeByAmount(newVal))}
-        text="Size"
+        text={lang.size}
       />
     </div>
   );
