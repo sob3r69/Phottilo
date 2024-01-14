@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "filter": "Фильтр",
+    "brush": "Кисть",
+    "eraser": "Ластик",
+    "postProcessing": "Постобработка",
+    "colors": "Цвета",
+    "crop": "Обрезать"
+  },
+  "modes": {
+    "paintMode": "Режим рисования",
+    "filterMode": "Режим фильтрации",
+    "resizeMode": "Режим обрезки"
+  },
+  "params": {
+    "size": "Размер",
+    "gapLength": "Длина зазора",
+    "gap": "Зазор",
+    "rgb": "RGB",
+    "blur": "Размытие",
+    "brightness": "Яркость",
+    "contrast": "Контраст",
+    "noise": "Шум",
+    "enableCrop": "Включить обрезку",
+    "disableCrop": "Отключить обрезку"
+  },
+  "funcs": {
+    "addImage": "Добавить изображение",
+    "saveImage": "Сохранить изображение",
+    "selectImage": "Выберите изображение",
+    "canvasSize": "Размер полотна",
+    "selectTool": "Выберите инструмент"
+  }
+}

@@ -1,26 +1,22 @@
 import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
-import { useContext } from 'react';
-import { ParamContext } from '../../../Contexts/Contexts';
 import { BsCrop } from 'react-icons/bs';
-import { CropParams } from './ResizeParams';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { changeParamNameTo } from '../../../store/reducers/ParamSlice';
 
 export default function () {
-  const context = useContext(ParamContext);
-  function changeParam(e: JSX.Element) {
-    context.setParam(e);
-  }
+  const lang = useAppSelector((state) => state.langSlice.langData.tools);
+  const dispatch = useAppDispatch();
 
   function changeParamName(name: string) {
-    context.setParamName(name);
+    dispatch(changeParamNameTo(name));
   }
 
   return (
     <>
       <ToolButton
         Icon={BsCrop}
-        hintText="Crop"
-        value={{ name: 'crop', e: <CropParams /> }}
-        changeParam={changeParam}
+        hintText={lang.crop}
+        name={lang.crop}
         changeParamName={changeParamName}
       />
     </>

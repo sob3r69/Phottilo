@@ -3,40 +3,30 @@ import { BiSlider } from 'react-icons/bi';
 
 import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import PostProcessing from './FilterParams/PostProcessParams';
-import { useContext } from 'react';
-import { ParamContext } from '../../../Contexts/Contexts';
 import ColorParams from './FilterParams/ColorParams';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { changeParamNameTo } from '../../../store/reducers/ParamSlice';
 
 export default function () {
-  const context = useContext(ParamContext);
-  function changeParam(e: JSX.Element) {
-    context.setParam(e);
-  }
+  const lang = useAppSelector((state) => state.langSlice.langData.tools);
+  const dispatch = useAppDispatch();
 
   function changeParamName(name: string) {
-    context.setParamName(name);
+    dispatch(changeParamNameTo(name));
   }
 
   return (
     <>
       <ToolButton
         Icon={BiSlider}
-        hintText="Post Processing"
-        value={{
-          name: 'post Processing',
-          e: <PostProcessing />,
-        }}
-        changeParam={changeParam}
+        hintText={lang.postProcessing}
+        name={lang.postProcessing}
         changeParamName={changeParamName}
       />
       <ToolButton
         Icon={TbColorFilter}
-        hintText="Colors"
-        value={{
-          name: 'colors',
-          e: <ColorParams />,
-        }}
-        changeParam={changeParam}
+        hintText={lang.colors}
+        name={lang.colors}
         changeParamName={changeParamName}
       />
     </>

@@ -2,7 +2,7 @@
   "homepage": "http://sob3r69.github.io/Phottilo",
   "name": "front",
   "private": true,
-  "version": "0.2.3",
+  "version": "0.2.4",
   "type": "module",
   "scripts": {
     "dev": "vite",

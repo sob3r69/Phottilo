@@ -13,6 +13,7 @@ import {
 export default () => {
   const dispatch = useAppDispatch();
   const settings = useAppSelector((state) => state.paintReducer);
+  const lang = useAppSelector((state) => state.langSlice.langData.params);
 
   const handleColorChange = (color: ColorResult) => {
     dispatch(changeBRedByAmount(color.rgb.r));
@@ -35,7 +36,7 @@ export default () => {
           step={1}
           value={settings.brush.size}
           onChange={(newVal) => dispatch(changeBSizeByAmount(newVal))}
-          text="Size"
+          text={lang.size}
         />
       </div>
       {/* <Slider
@@ -53,7 +54,7 @@ export default () => {
           step={1}
           value={settings.brush.gapLength}
           onChange={(newVal) => dispatch(changeBGapLenByAmount(newVal))}
-          text="Gap len"
+          text={lang.gapLength}
         />
         <Slider
           min={0}
@@ -61,7 +62,7 @@ export default () => {
           step={1}
           value={settings.brush.gap - 1}
           onChange={(newVal) => dispatch(changeBGapByAmount(newVal))}
-          text="Gap"
+          text={lang.gap}
         />
       </div>
 
