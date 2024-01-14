@@ -11,15 +11,7 @@ interface LineProps {
   eraserColor: string;
 }
 
-const BrushLine = ({
-  line,
-  color,
-  width,
-  gap,
-  tension,
-  tool,
-  eraserColor,
-}: LineProps) => {
+const BrushLine = ({ line, color, width, gap, tension, tool, eraserColor }: LineProps) => {
   const thisWidth = useRef(width);
   const thisColor = useRef(color);
   const thisGap = useRef(gap);

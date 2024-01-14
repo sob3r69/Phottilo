@@ -5,3 +5,8 @@
   overflow: auto;
   background-color: var(--elementColor);
 }
+
+.canvas-field {
+  display: flex;
+  flex-grow: 1;
+}

@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { ParamContext } from '../Contexts/Contexts';
 import { ImageField } from '../components/ImageField/ImageField';
 import { ParamField } from '../components/ParamField/ParamField';
 import StatusBar from '../components/StatusBar/StatusBar';
@@ -20,11 +19,6 @@ const WorkFlow = () => {
 
   const [param, setParam] = useState(<p>{lang.selectTool}</p>);
   const [paramName, setParamName] = useState('');
-  const paramValue = {
-    currParam: { paramName, param },
-    setParam: (e: JSX.Element) => setParam(e),
-    setParamName: (name: string) => setParamName(name),
-  };
 
   const [stageCreator, setSC] = useState<JSX.Element | undefined>(undefined);
 
@@ -44,30 +38,28 @@ const WorkFlow = () => {
   return (
     <section className="workflow">
       {stageCreator}
-      <ParamContext.Provider value={paramValue}>
-        <div className="App-row">
-          <ImageField
-            selectedImage={selectedImage!}
-            selectedMode={selectedMode}
-            stageScale={{ stageWidth, stageHeight }}
-            bgColor={bgColor}
-            stageRef={stageRef}
-            stageFuncs={stageFuncs}
-          />
-          <section className="params">
-            <Toolbox selectedMode={selectedMode} setMode={setMode} />
-            <ParamField />
-            <div className="btns-container">
-              <AddImageButton
-                Icon={BiImageAdd}
-                text={lang.addImage}
-                setSelectedImage={setSelectedImage}
-              />
-              <SaveImageButton Icon={BiSave} text={lang.saveImage} stageRef={stageRef} />
-            </div>
-          </section>
-        </div>
-      </ParamContext.Provider>
+      <div className="App-row">
+        <ImageField
+          selectedImage={selectedImage!}
+          selectedMode={selectedMode}
+          stageScale={{ stageWidth, stageHeight }}
+          bgColor={bgColor}
+          stageRef={stageRef}
+          stageFuncs={stageFuncs}
+        />
+        <section className="params">
+          <Toolbox selectedMode={selectedMode} setMode={setMode} />
+          <ParamField />
+          <div className="btns-container">
+            <AddImageButton
+              Icon={BiImageAdd}
+              text={lang.addImage}
+              setSelectedImage={setSelectedImage}
+            />
+            <SaveImageButton Icon={BiSave} text={lang.saveImage} stageRef={stageRef} />
+          </div>
+        </section>
+      </div>
       <StatusBar selectedImage={selectedImage!} stageScale={stageScale} />
     </section>
   );

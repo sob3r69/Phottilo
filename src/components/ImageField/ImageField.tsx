@@ -1,8 +1,7 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import './ImageField.css';
 import { Group, Image, Layer, Rect, Stage, Transformer } from 'react-konva';
 import FilteredImage from './FilteredImage';
-import { ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
 import BrushLine from './BrushLine';
@@ -40,6 +39,9 @@ export function ImageField({
   const settings = useAppSelector((state) => state.paintReducer);
   const filters = useAppSelector((state) => state.filterReducer);
   const cropSettings = useAppSelector((state) => state.cropReducer);
+  const currParam = useAppSelector((state) => state.paramReducer.paramName);
+
+  console.log('Обновлено');
 
   useEffect(() => {
     if (image) {
@@ -55,10 +57,13 @@ export function ImageField({
   const [lines, setLines] = useState<any>([]);
   const isDrawing = useRef(false);
 
-  const paramContext = useContext(ParamContext);
+  // const strokeWidth = useMemo(
+  //   () =>
+  //     paramContext.currParam.paramName === 'brush' ? settings.brush.size : settings.eraser.size,
+  //   [settings.brush.size]
+  // );
 
-  const strokeWidth =
-    paramContext.currParam.paramName === 'brush' ? settings.brush.size : settings.eraser.size;
+  const strokeWidth = currParam === 'brush' ? settings.brush.size : settings.eraser.size;
 
   const hex = rgb2hex(
     'rgb(' + settings.brush.red + ',' + settings.brush.green + ',' + settings.brush.blue + ')'
@@ -102,6 +107,7 @@ export function ImageField({
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+    console.log(lines);
     setLines([]);
     setLineURL(groupRef.current?.toDataURL()!);
   };
@@ -131,7 +137,8 @@ export function ImageField({
   };
 
   return (
-    <section className="image-field" ref={imageWrapper}>
+    <section className="canvas-field" ref={imageWrapper}>
+      {/* <canvas></canvas> */}
       <button
         style={{
           background: '#3430279a',
@@ -202,7 +209,7 @@ export function ImageField({
                 width={strokeWidth}
                 tension={settings.brush.tension}
                 gap={[settings.brush.gapLength, settings.brush.gap]}
-                tool={paramContext.currParam.paramName}
+                tool={currParam}
               />
             ))}
           </Group>

@@ -4,18 +4,11 @@ import './ToolButton.css';
 interface BtnProps {
   hintText: string;
   Icon: IconType;
-  value: { name: string; e: JSX.Element };
-  changeParam: (e: JSX.Element) => void;
+  name: string;
   changeParamName: (name: string) => void;
 }
 
-export default function ToolButton({
-  Icon,
-  hintText,
-  changeParam,
-  changeParamName,
-  value,
-}: BtnProps) {
+export default function ToolButton({ Icon, hintText, changeParamName, name }: BtnProps) {
   return (
     <div className="toolbutton-container">
       <button
@@ -23,8 +16,7 @@ export default function ToolButton({
         type="button"
         className="tool-button"
         onClick={() => {
-          changeParam(value.e);
-          changeParamName(value.name);
+          changeParamName(name);
         }}
       >
         <Icon className="tool-button-icon" size="1em" />

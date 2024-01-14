@@ -1,22 +1,18 @@
 import { BsBrush, BsEraser, BsPentagon } from 'react-icons/bs';
 
 import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
-import { ParamContext } from '../../../Contexts/Contexts';
 import { useContext } from 'react';
 import BrushParam from './PaintParams/BrushParam';
 import EraserParams from './PaintParams/EraserParams';
-import { useAppSelector } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { changeParamNameTo } from '../../../store/reducers/ParamSlice';
 
 export default function () {
-  const context = useContext(ParamContext);
   const lang = useAppSelector((state) => state.langSlice.langData.tools);
-
-  function changeParam(e: JSX.Element) {
-    context.setParam(e);
-  }
+  const dispatch = useAppDispatch();
 
   function changeParamName(name: string) {
-    context.setParamName(name);
+    dispatch(changeParamNameTo(name));
   }
 
   return (
@@ -24,15 +20,13 @@ export default function () {
       <ToolButton
         Icon={BsBrush}
         hintText={lang.brush}
-        value={{ name: 'brush', e: <BrushParam /> }}
-        changeParam={changeParam}
+        name={lang.brush}
         changeParamName={changeParamName}
       />
       <ToolButton
         Icon={BsEraser}
         hintText={lang.eraser}
-        value={{ name: 'eraser', e: <EraserParams /> }}
-        changeParam={changeParam}
+        name={lang.eraser}
         changeParamName={changeParamName}
       />
     </>
