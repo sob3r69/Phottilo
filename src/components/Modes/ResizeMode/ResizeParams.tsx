@@ -5,6 +5,7 @@ import { changeCropState } from '../../../store/reducers/CropSlice';
 export const CropParams = () => {
   const dispatch = useAppDispatch();
   const cropSettings = useAppSelector((state) => state.cropReducer);
+  const lang = useAppSelector((state) => state.langSlice.langData);
   return (
     <div className="param-container">
       <div className="sorting-container">
@@ -15,7 +16,7 @@ export const CropParams = () => {
             console.log(cropSettings.cropState);
           }}
         >
-          {cropSettings.cropState ? 'Disable crop' : 'Enable crop'}
+          {cropSettings.cropState ? lang.params.disableCrop : lang.params.enableCrop}
         </button>
       </div>
     </div>

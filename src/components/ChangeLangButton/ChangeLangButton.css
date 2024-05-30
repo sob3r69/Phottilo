@@ -1,0 +1,10 @@
+.lang-button {
+  background-color: var(--backgroundColor);
+  border: none;
+  outline: none;
+  height: 22px;
+}
+
+.lang-button-active {
+  background-color: var(--primaryActiveColor);
+}

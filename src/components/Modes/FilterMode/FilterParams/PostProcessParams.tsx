@@ -9,12 +9,13 @@ import {
 
 const PostProcessing = () => {
   const dispatch = useAppDispatch();
+  const lang = useAppSelector((state) => state.langSlice.langData.params);
   const filters = useAppSelector((state) => state.filterReducer);
   console.log('Param render');
   return (
     <div className="param-container">
       <Slider
-        text="Blur"
+        text={lang.blur}
         min={0}
         max={100}
         step={1}
@@ -23,7 +24,7 @@ const PostProcessing = () => {
         borderColor={''}
       />
       <Slider
-        text="Brightness"
+        text={lang.brightness}
         min={-1}
         max={1}
         step={0.01}
@@ -31,7 +32,7 @@ const PostProcessing = () => {
         onChange={(newVal) => dispatch(changeBrightByAmount(newVal))}
       />
       <Slider
-        text="Contrast"
+        text={lang.contrast}
         min={0}
         max={100}
         step={1}
@@ -39,7 +40,7 @@ const PostProcessing = () => {
         onChange={(newVal) => dispatch(changeContrastByAmount(newVal))}
       />
       <Slider
-        text="Noise"
+        text={lang.noise}
         min={0}
         max={0.4}
         step={0.01}
