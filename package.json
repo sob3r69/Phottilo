@@ -12,24 +12,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
-    "konva": "^9.0.1",
-    "react": "^18.2.0",
+    "@reduxjs/toolkit": "^1.9.7",
+    "konva": "^9.3.16",
+    "react": "^18.3.1",
     "react-color": "^2.19.3",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "react-konva": "^18.2.7",
-    "react-redux": "^8.1.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^4.12.0",
+    "react-konva": "^18.2.10",
+    "react-redux": "^8.1.3",
     "rgb2hex": "^0.2.5",
-    "use-image": "^1.1.0"
+    "use-image": "^1.1.1"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-color": "^3.0.6",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.3.12",
+    "@types/react-color": "^3.0.12",
+    "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^3.1.0",
     "gh-pages": "^5.0.0",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "prettier": "3.4.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.5.5"
   }
 }
