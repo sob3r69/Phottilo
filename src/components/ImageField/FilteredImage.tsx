@@ -1,6 +1,6 @@
 import Konva from 'konva';
 import { Image as ImageShape } from 'konva/lib/shapes/Image';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Image } from 'react-konva';
 import { useAppSelector } from '../../hooks/redux';
 

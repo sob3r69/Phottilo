@@ -1,12 +1,12 @@
-import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
-import { useContext } from 'react';
-import { ParamContext } from '../../../Contexts/Contexts';
+import { ReactElement, useContext } from 'react';
 import { BsCrop } from 'react-icons/bs';
+import { ParamContext } from '../../../Contexts/Contexts';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import { CropParams } from './ResizeParams';
 
-export default function () {
+const ResizeTools = () => {
   const context = useContext(ParamContext);
-  function changeParam(e: JSX.Element) {
+  function changeParam(e: ReactElement) {
     context.setParam(e);
   }
 
@@ -18,11 +18,13 @@ export default function () {
     <>
       <ToolButton
         Icon={BsCrop}
-        hintText="Crop"
+        hintText='Crop'
         value={{ name: 'crop', e: <CropParams /> }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
     </>
   );
-}
+};
+
+export default ResizeTools;

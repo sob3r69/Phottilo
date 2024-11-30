@@ -21,20 +21,20 @@ export default function Slider({
 }: SliderProps) {
   const border = borderColor
     ? { border: '2px solid ' + borderColor }
-    : { border: '2px solid var(--primaryColor)' };
+    : { border: '2px solid var(--primary-color)' };
 
-  const sliderText = text ? <div className="slider-text">{text}</div> : null;
+  const sliderText = text ? <div className='slider-text'>{text}</div> : null;
 
   return (
-    <div className="slider-field">
+    <div className='slider-field'>
       {sliderText}
-      <label className="slider-label">
-        <div className="slider-value" style={border}>
+      <label className='slider-label'>
+        <div className='slider-value' style={border}>
           {value}
         </div>
         <input
-          id="slider"
-          type="range"
+          id='slider'
+          type='range'
           min={min}
           max={max}
           value={value}

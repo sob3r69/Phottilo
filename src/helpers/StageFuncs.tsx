@@ -1,7 +1,8 @@
-import Konva from 'konva';
+import { Stage } from 'konva/lib/Stage';
+import { RefObject } from 'react';
 
 export const downloadURI = (uri: string, name: string) => {
-  var link = document.createElement('a');
+  const link = document.createElement('a');
   link.download = name;
   link.href = uri;
   document.body.appendChild(link);
@@ -9,7 +10,7 @@ export const downloadURI = (uri: string, name: string) => {
   document.body.removeChild(link);
 };
 
-export const createURIFromStage = (stageRef: React.RefObject<Konva.Stage>) => {
+export const createURIFromStage = (stageRef: RefObject<Stage>) => {
   const uri = stageRef.current!.toDataURL();
   return uri;
 };

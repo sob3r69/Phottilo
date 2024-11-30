@@ -1,15 +1,14 @@
-import { TbColorFilter } from 'react-icons/tb';
+import { ReactElement, useContext } from 'react';
 import { BiSlider } from 'react-icons/bi';
-
-import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
-import PostProcessing from './FilterParams/PostProcessParams';
-import { useContext } from 'react';
+import { TbColorFilter } from 'react-icons/tb';
 import { ParamContext } from '../../../Contexts/Contexts';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import ColorParams from './FilterParams/ColorParams';
+import PostProcessing from './FilterParams/PostProcessParams';
 
-export default function () {
+const FilterTools = () => {
   const context = useContext(ParamContext);
-  function changeParam(e: JSX.Element) {
+  function changeParam(e: ReactElement) {
     context.setParam(e);
   }
 
@@ -21,7 +20,7 @@ export default function () {
     <>
       <ToolButton
         Icon={BiSlider}
-        hintText="Post Processing"
+        hintText='Post Processing'
         value={{
           name: 'post Processing',
           e: <PostProcessing />,
@@ -31,7 +30,7 @@ export default function () {
       />
       <ToolButton
         Icon={TbColorFilter}
-        hintText="Colors"
+        hintText='Colors'
         value={{
           name: 'colors',
           e: <ColorParams />,
@@ -41,4 +40,6 @@ export default function () {
       />
     </>
   );
-}
+};
+
+export default FilterTools;

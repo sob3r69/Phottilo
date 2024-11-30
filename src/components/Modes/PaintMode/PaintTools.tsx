@@ -1,38 +1,40 @@
-import { BsBrush, BsEraser, BsPentagon } from 'react-icons/bs';
+import { BsBrush, BsEraser } from 'react-icons/bs';
 
-import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
+import { ReactElement, useContext } from 'react';
 import { ParamContext } from '../../../Contexts/Contexts';
-import { useContext } from 'react';
+import ToolButton from '../../ToolboxContainer/ToolButton/ToolButton';
 import BrushParam from './PaintParams/BrushParam';
 import EraserParams from './PaintParams/EraserParams';
 
-export default function () {
-  const context = useContext(ParamContext);
+const PaintTools = () => {
+  const { setParam, setParamName } = useContext(ParamContext);
 
-  function changeParam(e: JSX.Element) {
-    context.setParam(e);
+  function changeParam(e: ReactElement) {
+    setParam(e);
   }
 
   function changeParamName(name: string) {
-    context.setParamName(name);
+    setParamName(name);
   }
 
   return (
     <>
       <ToolButton
         Icon={BsBrush}
-        hintText="Brush"
+        hintText='Brush'
         value={{ name: 'brush', e: <BrushParam /> }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
       <ToolButton
         Icon={BsEraser}
-        hintText="Eraser"
+        hintText='Eraser'
         value={{ name: 'eraser', e: <EraserParams /> }}
         changeParam={changeParam}
         changeParamName={changeParamName}
       />
     </>
   );
-}
+};
+
+export default PaintTools;

@@ -1,27 +1,34 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import './ImageField.css';
+import Konva from 'konva';
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Group, Image, Layer, Rect, Stage, Transformer } from 'react-konva';
-import FilteredImage from './FilteredImage';
-import { ParamContext } from '../../Contexts/Contexts';
 import rgb2hex from 'rgb2hex';
 import useImage from 'use-image';
-import BrushLine from './BrushLine';
-import { Mode } from '../Modes/ModeTypes';
-import { modes } from '../Modes/ModeTypes';
-import Konva from 'konva';
+import { ParamContext } from '../../Contexts/Contexts';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { changeCropState } from '../../store/reducers/CropSlice';
+import { Mode, modes } from '../Modes/ModeTypes';
+import BrushLine from './BrushLine';
+import FilteredImage from './FilteredImage';
+import './ImageField.css';
 
 interface ImageFieldProps {
   selectedImage: File;
   selectedMode: Mode;
   stageScale: { stageWidth: number; stageHeight: number };
   bgColor: string;
-  stageRef: React.RefObject<Konva.Stage>;
+  stageRef: RefObject<Konva.Stage>;
   stageFuncs: {
-    setSWidth: React.Dispatch<React.SetStateAction<number>>;
-    setSHeight: React.Dispatch<React.SetStateAction<number>>;
-    setBgColor: React.Dispatch<React.SetStateAction<string>>;
+    setSWidth: Dispatch<SetStateAction<number>>;
+    setSHeight: Dispatch<SetStateAction<number>>;
+    setBgColor: Dispatch<SetStateAction<string>>;
   };
 }
 
@@ -61,10 +68,10 @@ export function ImageField({
     paramContext.currParam.paramName === 'brush' ? settings.brush.size : settings.eraser.size;
 
   const hex = rgb2hex(
-    'rgb(' + settings.brush.red + ',' + settings.brush.green + ',' + settings.brush.blue + ')'
+    'rgb(' + settings.brush.red + ',' + settings.brush.green + ',' + settings.brush.blue + ')',
   );
 
-  var imageWrapper = useRef<HTMLDivElement>(null);
+  const imageWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (selectedImage) {
@@ -88,7 +95,7 @@ export function ImageField({
     const point = stage.getPointerPosition();
 
     // To draw line
-    let lastLine: any = lines[lines.length - 1];
+    const lastLine: any = lines[lines.length - 1];
 
     if (lastLine) {
       // add point
@@ -103,7 +110,7 @@ export function ImageField({
   const handleMouseUp = () => {
     isDrawing.current = false;
     setLines([]);
-    setLineURL(groupRef.current?.toDataURL()!);
+    setLineURL(groupRef.current!.toDataURL()!);
   };
 
   const [cropWidth, setCropWidth] = useState(6000);
@@ -131,7 +138,7 @@ export function ImageField({
   };
 
   return (
-    <section className="image-field" ref={imageWrapper}>
+    <section className='image-field' ref={imageWrapper}>
       <button
         style={{
           background: '#3430279a',
@@ -207,7 +214,7 @@ export function ImageField({
             ))}
           </Group>
           <Rect
-            fill="black"
+            fill='black'
             visible={cropSettings.cropState}
             width={stageScale.stageWidth}
             height={stageScale.stageHeight}
@@ -220,7 +227,7 @@ export function ImageField({
             y={2}
             width={stageScale.stageWidth - 4}
             height={stageScale.stageHeight - 4}
-            onTransformEnd={(e) => {
+            onTransformEnd={() => {
               // transformer is changing scale of the node
               // and NOT its width or height
               // but in the store we have only width and height

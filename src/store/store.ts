@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import cropReducer from './reducers/CropSlice';
 import filterReducer from './reducers/FilterSlice';
 import paintReducer from './reducers/PaintSlice';
-import cropReducer from './reducers/CropSlice';
 
 const rootReducer = combineReducers({ filterReducer, paintReducer, cropReducer });
 

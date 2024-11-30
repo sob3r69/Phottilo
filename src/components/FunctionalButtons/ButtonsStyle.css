@@ -1,17 +1,18 @@
 .functional-button {
   align-items: center;
-  background: var(--elementColor);
+  background: var(--element-color);
   border: none;
   border-radius: 8px;
-  color: var(--primaryColor);
+  color: var(--primary-color);
   display: flex;
   font-size: 24px;
   text-align: center;
   padding: 8px;
   width: 48%;
 }
+
 .functional-button:hover {
-  background-color: var(--primaryActiveColor);
+  background-color: var(--primary-active-color);
   cursor: pointer;
-  outline: 1px solid var(--primaryColor);
+  outline: 1px solid var(--primary-color);
 }

@@ -1,4 +1,3 @@
-import Slider from '../../../ParamField/Slider/Slider';
 import { CirclePicker, ColorResult } from 'react-color';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import {
@@ -9,8 +8,9 @@ import {
   changeBRedByAmount,
   changeBSizeByAmount,
 } from '../../../../store/reducers/PaintSlice';
+import Slider from '../../../ParamField/Slider/Slider';
 
-export default () => {
+const BrushParams = () => {
   const dispatch = useAppDispatch();
   const settings = useAppSelector((state) => state.paintReducer);
 
@@ -22,20 +22,20 @@ export default () => {
 
   return (
     <>
-      <div className="brush-params-default-colors">
+      <div className='brush-params-default-colors'>
         <CirclePicker
           colors={['#FFFFFF', '#000000', '#FF0000', '#00FF00', '#0000FF', '#9a8960']}
           onChange={handleColorChange}
         />
       </div>
-      <div className="sorting-container">
+      <div className='sorting-container'>
         <Slider
           min={1}
           max={100}
           step={1}
           value={settings.brush.size}
           onChange={(newVal) => dispatch(changeBSizeByAmount(newVal))}
-          text="Size"
+          text='Size'
         />
       </div>
       {/* <Slider
@@ -46,14 +46,14 @@ export default () => {
         onChange={context.funcs.brush.changeTension}
         text="Как эту хуйню описать"
       /> */}
-      <div className="sorting-container">
+      <div className='sorting-container'>
         <Slider
           min={0}
           max={100}
           step={1}
           value={settings.brush.gapLength}
           onChange={(newVal) => dispatch(changeBGapLenByAmount(newVal))}
-          text="Gap len"
+          text='Gap len'
         />
         <Slider
           min={0}
@@ -61,12 +61,12 @@ export default () => {
           step={1}
           value={settings.brush.gap - 1}
           onChange={(newVal) => dispatch(changeBGapByAmount(newVal))}
-          text="Gap"
+          text='Gap'
         />
       </div>
 
-      <div className="sorting-container">
-        <div className="sorting-text">RGB</div>
+      <div className='sorting-container'>
+        <div className='sorting-text'>RGB</div>
         <Slider
           min={0}
           max={255}
@@ -103,3 +103,5 @@ export default () => {
     </>
   );
 };
+
+export default BrushParams;

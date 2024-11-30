@@ -1,6 +1,6 @@
-import './ButtonsStyle.css';
-import { IconType } from 'react-icons';
 import { Dispatch, SetStateAction } from 'react';
+import { IconType } from 'react-icons';
+import './ButtonsStyle.css';
 
 interface BtnProps {
   Icon: IconType;
@@ -10,9 +10,9 @@ interface BtnProps {
 
 const AddImageButton = ({ Icon, text, setSelectedImage }: BtnProps) => {
   return (
-    <label className="functional-button">
+    <label className='functional-button'>
       <input
-        type="file"
+        type='file'
         style={{ display: 'none' }}
         onChange={(img) => {
           if (img.target.files![0]) setSelectedImage!(img.target.files![0]);

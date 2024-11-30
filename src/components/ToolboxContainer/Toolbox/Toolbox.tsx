@@ -1,5 +1,6 @@
-import ModeChanger from '../ModeChanger/ModeChanger';
+import React from 'react';
 import { Mode } from '../../Modes/ModeTypes';
+import ModeChanger from '../ModeChanger/ModeChanger';
 
 import './Toolbox.css';
 
@@ -10,9 +11,9 @@ interface ToolBoxProps {
 
 export default function Toolbox({ selectedMode, setMode }: ToolBoxProps) {
   return (
-    <div className="toolbox">
+    <div className='toolbox'>
       <ModeChanger selectedMode={selectedMode} setMode={setMode} />
-      <div className="toolbox-separator"></div>
+      <div className='toolbox-separator'></div>
       {selectedMode.tools}
     </div>
   );

@@ -1,4 +1,3 @@
-import Slider from '../../../ParamField/Slider/Slider';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import {
   changeBlurByAmount,
@@ -6,15 +5,16 @@ import {
   changeContrastByAmount,
   changeNoiseByAmount,
 } from '../../../../store/reducers/FilterSlice';
+import Slider from '../../../ParamField/Slider/Slider';
 
 const PostProcessing = () => {
   const dispatch = useAppDispatch();
   const filters = useAppSelector((state) => state.filterReducer);
   console.log('Param render');
   return (
-    <div className="param-container">
+    <div className='param-container'>
       <Slider
-        text="Blur"
+        text='Blur'
         min={0}
         max={100}
         step={1}
@@ -23,7 +23,7 @@ const PostProcessing = () => {
         borderColor={''}
       />
       <Slider
-        text="Brightness"
+        text='Brightness'
         min={-1}
         max={1}
         step={0.01}
@@ -31,7 +31,7 @@ const PostProcessing = () => {
         onChange={(newVal) => dispatch(changeBrightByAmount(newVal))}
       />
       <Slider
-        text="Contrast"
+        text='Contrast'
         min={0}
         max={100}
         step={1}
@@ -39,7 +39,7 @@ const PostProcessing = () => {
         onChange={(newVal) => dispatch(changeContrastByAmount(newVal))}
       />
       <Slider
-        text="Noise"
+        text='Noise'
         min={0}
         max={0.4}
         step={0.01}

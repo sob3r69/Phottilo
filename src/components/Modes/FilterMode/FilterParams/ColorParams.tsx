@@ -7,12 +7,12 @@ import {
 } from '../../../../store/reducers/FilterSlice';
 import Slider from '../../../ParamField/Slider/Slider';
 
-export default () => {
+const ColorParams = () => {
   const dispatch = useAppDispatch();
   const filters = useAppSelector((state) => state.filterReducer);
 
   return (
-    <div className="param-container">
+    <div className='param-container'>
       <Slider
         min={0}
         max={255}
@@ -48,3 +48,5 @@ export default () => {
     </div>
   );
 };
+
+export default ColorParams;

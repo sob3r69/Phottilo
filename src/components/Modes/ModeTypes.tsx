@@ -1,11 +1,12 @@
+import { ReactElement } from 'react';
 import FilterTools from './FilterMode/FilterTools';
 import PaintTools from './PaintMode/PaintTools';
-import ResizeTools from './ResizeMode/ResizeTools';
 import './Params.css';
+import ResizeTools from './ResizeMode/ResizeTools';
 
 export type Mode = {
   name: string;
-  tools: JSX.Element;
+  tools: ReactElement;
 };
 
 export const modes = {

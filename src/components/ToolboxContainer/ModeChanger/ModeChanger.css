@@ -18,7 +18,7 @@
   font-size: 20px;
   display: none;
   position: absolute;
-  background-color: var(--elementColor);
+  background-color: var(--element-color);
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 0 0 8px 8px;
@@ -27,8 +27,8 @@
 }
 
 .dropdown-content button {
-  color: var(--primaryColor);
-  background-color: var(--elementColor);
+  color: var(--primary-color);
+  background-color: var(--element-color);
   border: none;
   font-size: 20px;
   margin-top: 8px;

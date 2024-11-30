@@ -1,16 +1,16 @@
-import { useEffect, useState, useRef } from 'react';
-import { ParamContext } from '../Contexts/Contexts';
-import { ImageField } from '../components/ImageField/ImageField';
-import { ParamField } from '../components/ParamField/ParamField';
-import StatusBar from '../components/StatusBar/StatusBar';
-import Toolbox from '../components/ToolboxContainer/Toolbox/Toolbox';
-import { modes } from '../components/Modes/ModeTypes';
-import './WorkFlow.css';
-import StageCreator from '../components/StageCreator/StageCreator';
+import Konva from 'konva';
+import { ReactElement, useRef, useState } from 'react';
 import { BiImageAdd, BiSave } from 'react-icons/bi';
 import AddImageButton from '../components/FunctionalButtons/AddImageButton';
 import SaveImageButton from '../components/FunctionalButtons/SaveImageButton';
-import Konva from 'konva';
+import { ImageField } from '../components/ImageField/ImageField';
+import { modes } from '../components/Modes/ModeTypes';
+import { ParamField } from '../components/ParamField/ParamField';
+import StageCreator from '../components/StageCreator/StageCreator';
+import StatusBar from '../components/StatusBar/StatusBar';
+import Toolbox from '../components/ToolboxContainer/Toolbox/Toolbox';
+import { ParamContext } from '../Contexts/Contexts';
+import './WorkFlow.css';
 
 const WorkFlow = () => {
   const [selectedImage, setSelectedImage] = useState<File>();
@@ -20,11 +20,9 @@ const WorkFlow = () => {
   const [paramName, setParamName] = useState('');
   const paramValue = {
     currParam: { paramName, param },
-    setParam: (e: JSX.Element) => setParam(e),
+    setParam: (e: ReactElement) => setParam(e),
     setParamName: (name: string) => setParamName(name),
   };
-
-  const [stageCreator, setSC] = useState<JSX.Element | undefined>(undefined);
 
   const [stageWidth, setSWidth] = useState(100);
   const [stageHeight, setSHeight] = useState(100);
@@ -33,17 +31,13 @@ const WorkFlow = () => {
   const stageFuncs = { setSWidth, setSHeight, setBgColor };
   const stageScale = { width: stageWidth, height: stageHeight };
 
-  useEffect(() => {
-    setSC(<StageCreator funcs={stageFuncs} bgColor={bgColor} />);
-  }, []);
-
   const stageRef = useRef<Konva.Stage>(null);
 
   return (
-    <section className="workflow">
-      {stageCreator}
+    <section className='workflow'>
+      <StageCreator funcs={stageFuncs} />
       <ParamContext.Provider value={paramValue}>
-        <div className="App-row">
+        <div className='app-row'>
           <ImageField
             selectedImage={selectedImage!}
             selectedMode={selectedMode}
@@ -52,16 +46,16 @@ const WorkFlow = () => {
             stageRef={stageRef}
             stageFuncs={stageFuncs}
           />
-          <section className="params">
+          <section className='params'>
             <Toolbox selectedMode={selectedMode} setMode={setMode} />
             <ParamField />
-            <div className="btns-container">
+            <div className='btns-container'>
               <AddImageButton
                 Icon={BiImageAdd}
-                text="Add image"
+                text='Add image'
                 setSelectedImage={setSelectedImage}
               />
-              <SaveImageButton Icon={BiSave} text="Save image" stageRef={stageRef} />
+              <SaveImageButton Icon={BiSave} text='Save image' stageRef={stageRef} />
             </div>
           </section>
         </div>

@@ -1,7 +1,7 @@
 .tool-button {
   display: flex;
-  color: var(--primaryColor);
-  background-color: var(--elementColor);
+  color: var(--primary-color);
+  background-color: var(--element-color);
   border: none;
   border-radius: 8px;
   padding: 4px;
@@ -15,18 +15,19 @@
   background-color: white;
   border-radius: 8px;
   font-size: 12px;
-  padding: 2px 8px 2px 8px;
+  padding: 2px 8px;
   margin-top: 60px;
   opacity: 0;
   transition: opacity 1s;
 }
+
 .toolbutton-container:hover .toolbutton-hint {
   visibility: visible;
   opacity: 2;
 }
 
 .tool-button:hover {
-  background-color: var(--primaryActiveColor);
+  background-color: var(--primary-active-color);
 }
 
 .toolbutton-container {
